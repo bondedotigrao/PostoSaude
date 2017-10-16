@@ -3,7 +3,7 @@ package model.funcionario;
 
 import java.util.List;
 
-
+//Dao generico
 public interface Dao <D>{
     
     public void inserir(D d);
