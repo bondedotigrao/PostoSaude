@@ -1,6 +1,5 @@
 package model.funcionario;
 
-
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,7 +11,7 @@ public class FuncionarioHibernate implements FuncionarioDao {
     private SessionFactory sessions;
 
     public FuncionarioHibernate() {
-        
+
         Configuration cfg = new Configuration().configure();
 
         this.sessions = cfg.buildSessionFactory();
@@ -20,7 +19,7 @@ public class FuncionarioHibernate implements FuncionarioDao {
 
     @Override
     public void inserir(FuncionarioSaude func) {
-       
+
         Session session = this.sessions.openSession();
         Transaction t = session.beginTransaction();
 
@@ -36,14 +35,20 @@ public class FuncionarioHibernate implements FuncionarioDao {
     }
 
     @Override
-    public void atualizar(FuncionarioSaude d) {
-        
-        
+    public void alterar(FuncionarioSaude d) {
+    }
+
+    @Override
+    public FuncionarioSaude recuperar(int codigo) {
+
+        Session session = this.sessions.openSession();
+        session.createQuery("from FuncionarioSaude where codigo" + codigo).list();
+        return null;
     }
 
     @Override
     public void deletar(FuncionarioSaude func) {
-        
+
         Session session = this.sessions.openSession();
         Transaction t = session.beginTransaction();
         session.get(FuncionarioSaude.class, func.getCodigo());
@@ -57,38 +62,18 @@ public class FuncionarioHibernate implements FuncionarioDao {
         } finally {
             session.close();
         }
-    
+
     }
 
-    @Override
-    public FuncionarioSaude recuperar(int codigo) {
-        
-        Session session = this.sessions.openSession();
-        session.createQuery("from FuncionarioSaude where codigo"+codigo).list();
+    public List<FuncionarioSaude> listarTodos() {
+
         return null;
     }
 
-    @Override
-    public List<FuncionarioSaude> listarTodos(FuncionarioSaude d) {
-        
-        
-        return null;
-    }
-    
-    public FuncionarioSaude recuperar(String sql) {
-        
-        Session session = this.sessions.openSession();
-        session.createQuery("").list();
-        return null;
-    }
-
-
-    public void procurarCpf(String cpf) {
-        
-    }
 
     @Override
     public void RecuperaCpf(String cpf) {
-      
+
     }
+
 }
