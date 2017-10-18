@@ -49,10 +49,11 @@ public class FuncionarioHibernate implements FuncionarioDao {
     public void alterar(FuncionarioSaude func) {
         Session session = this.sessions.openSession();
         Transaction t = session.beginTransaction();
-        session.get(FuncionarioSaude.class, func.getCodigo());
-
+        /* ele quer saber o porque faz isso*/  session.get(FuncionarioSaude.class, func.getCodigo());
+        
+        
         try {
-
+// nos catchs seria bom colocar pra exibir a mensagem dos erros;
             session.update(func);
             t.commit();
         } catch (Exception e) {
