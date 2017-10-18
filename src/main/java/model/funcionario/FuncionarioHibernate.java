@@ -9,19 +9,17 @@ import org.hibernate.cfg.Configuration;
 public class FuncionarioHibernate implements FuncionarioDao {
 
     private SessionFactory sessions;
-    private static FuncionarioHibernate instance = null;
-    
+    private static FuncionarioHibernate instance;
 
     public static FuncionarioHibernate getInstance() {
 
-        if (instance == null){
+        if (instance != null) {
             instance = new FuncionarioHibernate();
         }
 
         return instance;
     }
 
-    
     public FuncionarioHibernate() {
 
         Configuration cfg = new Configuration().configure();
@@ -49,7 +47,7 @@ public class FuncionarioHibernate implements FuncionarioDao {
     public void alterar(FuncionarioSaude func) {
         Session session = this.sessions.openSession();
         Transaction t = session.beginTransaction();
-        /* ele quer saber o porque faz isso*/  session.get(FuncionarioSaude.class, func.getCodigo());
+       
         
         
         try {
@@ -86,7 +84,6 @@ public class FuncionarioHibernate implements FuncionarioDao {
 
         Session session = this.sessions.openSession();
         Transaction t = session.beginTransaction();
-        session.get(FuncionarioSaude.class, func.getCodigo());
 
         try {
             session.delete(func);
@@ -120,14 +117,28 @@ public class FuncionarioHibernate implements FuncionarioDao {
         Session session = this.sessions.openSession();
 
         try {
-            fs = (FuncionarioSaude) session.getSession().createQuery
-        ("From FuncionarioSaude Where cpf='" + cpf + "'").getResultList().get(0);
+            fs = (FuncionarioSaude) session.getSession().createQuery("From FuncionarioSaude Where cpf='" + cpf + "'").getResultList().get(0);
 
         } finally {
             //Fechamos a sessão
             session.close();
         }
         return fs;
+    }
+
+    @Override
+    public FuncionarioSaude RecuperaCodigo(int codigo) {
+        Session session = this.sessions.openSession();
+
+        try {
+            return (FuncionarioSaude) session.getSession().createQuery("From FuncionarioSaude Where codigo=" + codigo).
+                    getResultList().get(0);
+
+        } finally {
+            //Fechamos a sessão
+            session.close();
+        }
+
     }
 
 }

@@ -1,6 +1,7 @@
 
 package teste;
 
+import controller.FuncionarioController;
 import java.util.Scanner;
 import model.funcionario.FuncionarioHibernate;
 import model.funcionario.FuncionarioSaude;
@@ -23,9 +24,8 @@ public class main {
             System.out.println("Didite a especialidade");
             especialidade = ler.next();
         FuncionarioSaude fs = new FuncionarioSaude(nome,cpf,especialidade,codigo);
-        FuncionarioHibernate fh = new FuncionarioHibernate();
         
-        fh.inserir(fs);
+        new FuncionarioController().registrarFuncionarioSaude(fs);
         
         
     }
