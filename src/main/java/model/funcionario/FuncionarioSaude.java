@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Table(name = "funcionariosaude")
 
 public class FuncionarioSaude {
-
+//Funcionário
     @Id
     @Column(name = "id_func")
     @GeneratedValue

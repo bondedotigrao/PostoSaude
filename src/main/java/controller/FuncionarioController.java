@@ -1,8 +1,6 @@
 
 package controller;
 
-
-import model.funcionario.FuncionarioHibernate;
 import model.funcionario.FuncionarioSaude;
 import model.funcionario.FuncionarioSaudeModel;
 
