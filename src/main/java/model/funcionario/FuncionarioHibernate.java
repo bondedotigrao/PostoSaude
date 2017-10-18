@@ -9,11 +9,22 @@ import org.hibernate.cfg.Configuration;
 public class FuncionarioHibernate implements FuncionarioDao {
 
     private SessionFactory sessions;
+    private static FuncionarioHibernate instance = null;
+    
 
+    public static FuncionarioHibernate getInstance() {
+
+        if (instance == null){
+            instance = new FuncionarioHibernate();
+        }
+
+        return instance;
+    }
+
+    
     public FuncionarioHibernate() {
 
         Configuration cfg = new Configuration().configure();
-
         this.sessions = cfg.buildSessionFactory();
     }
 
@@ -35,15 +46,38 @@ public class FuncionarioHibernate implements FuncionarioDao {
     }
 
     @Override
-    public void alterar(FuncionarioSaude d) {
+    public void alterar(FuncionarioSaude func) {
+        Session session = this.sessions.openSession();
+        Transaction t = session.beginTransaction();
+        session.get(FuncionarioSaude.class, func.getCodigo());
+
+        try {
+
+            session.update(func);
+            t.commit();
+        } catch (Exception e) {
+
+            t.rollback();
+
+        } finally {
+            session.close();
+
+        }
     }
 
     @Override
     public FuncionarioSaude recuperar(int codigo) {
 
         Session session = this.sessions.openSession();
-        session.createQuery("from FuncionarioSaude where codigo" + codigo).list();
-        return null;
+
+        try {
+            return (FuncionarioSaude) session.getSession().createQuery("From FuncionarioSaude Where codigo=" + codigo).
+                    getResultList().get(0);
+
+        } finally {
+            //Fechamos a sessão
+            session.close();
+        }
     }
 
     @Override
@@ -67,13 +101,32 @@ public class FuncionarioHibernate implements FuncionarioDao {
 
     public List<FuncionarioSaude> listarTodos() {
 
-        return null;
+        Session session = this.sessions.openSession();
+
+        try {
+
+            return (List) session.getSession().createQuery("from FuncionarioSaude").getResultList();
+
+        } finally {
+
+            session.close();
+        }
     }
 
-
     @Override
-    public void RecuperaCpf(String cpf) {
+    public FuncionarioSaude RecuperaCpf(String cpf) {
+        FuncionarioSaude fs = null;
+        Session session = this.sessions.openSession();
 
+        try {
+            fs = (FuncionarioSaude) session.getSession().createQuery
+        ("From FuncionarioSaude Where cpf='" + cpf + "'").getResultList().get(0);
+
+        } finally {
+            //Fechamos a sessão
+            session.close();
+        }
+        return fs;
     }
 
 }
