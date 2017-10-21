@@ -4,8 +4,8 @@ package model.funcionario;
 
 public interface FuncionarioDao extends Dao<FuncionarioSaude> {
     
-    public FuncionarioSaude RecuperaCpf(String cpf);
-    public FuncionarioSaude RecuperaCodigo(int codigo);
+    public FuncionarioSaude recuperaCpf(String cpf);
+    public FuncionarioSaude recuperaCodigo(int codigo);
     
     
 }

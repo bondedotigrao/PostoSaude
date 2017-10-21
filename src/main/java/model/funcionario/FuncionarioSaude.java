@@ -15,11 +15,11 @@ public class FuncionarioSaude {
     @Column(name = "id_func")
     @GeneratedValue
     private int codigo;
-    @Column
+    @Column(length = 50)
     private String nome;
-    @Column
+    @Column(length = 14,unique = true,nullable = false)
     private String cpf;
-    @Column
+    @Column(length = 50)
     private String especialidade;
 
     public FuncionarioSaude() {
@@ -66,3 +66,4 @@ public class FuncionarioSaude {
     }
 
 }
+
