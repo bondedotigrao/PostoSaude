@@ -7,10 +7,7 @@ package model.funcionario;
 
 import java.util.List;
 
-/**
- *
- * @author Milena Macedo
- */
+
 public interface Dao<D> {
 
     public void inserir(D d);

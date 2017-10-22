@@ -7,8 +7,9 @@
     <property name="hibernate.connection.url">jdbc:postgresql://localhost:5433/PostoSaude</property>
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.connection.password">1</property>
+    
     <!--Mapeamento-->
-    <property name="hibernate.hbm2ddl.auto">create</property>
+   
     <mapping class="model.funcionario.FuncionarioSaude"/>
   </session-factory>
 </hibernate-configuration>

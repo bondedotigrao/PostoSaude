@@ -10,16 +10,16 @@ public class FuncionarioSaudeModel {
    
     public void cadastrarFuncSaude(FuncionarioSaude func) {
 
-        if (validarCpf.isCPF(func.getCpf())) {
+        //if (validarCpf.isCPF(func.getCpf())) {
             /*if (((FuncionarioDao) dao).RecuperaCpf(func.getCpf()) != null
                     && (((FuncionarioDao) dao).RecuperaCodigo(func.getCodigo()) != null)) {
                 dao.inserir(func);
 
             }*/
             
-            if (!((FuncionarioDao) dao).existe(func)){
+            if (!((FuncionarioDao)dao).existe(func)){
                 dao.inserir(func);
-            }
+     //       }
         }
 
     }
