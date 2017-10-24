@@ -10,6 +10,7 @@
     
     <!--Mapeamento-->
    
-    <mapping class="model.funcionario.FuncionarioSaude"/>
+    <mapping class="model.FuncionarioSaude"/>
+    
   </session-factory>
 </hibernate-configuration>

@@ -1,4 +1,4 @@
-package model.funcionario;
+package model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,22 +11,23 @@ import javax.persistence.Table;
 
 public class FuncionarioSaude {
 //Funcionário
+
     @Id
     @Column(name = "id_func")
     @GeneratedValue
     private int codigo;
     @Column(length = 50)
     private String nome;
-    @Column(length = 14,unique = true,nullable = false)
+    @Column(length = 14, unique = true, nullable = false)
     private String cpf;
     @Column(length = 50)
     private String especialidade;
 
     public FuncionarioSaude() {
-        
+
     }
 
-    public FuncionarioSaude(String nome, String cpf, String especialidade, int codigo) {
+    public FuncionarioSaude(String nome, String cpf, String especialidade) {
         this.nome = nome;
         this.cpf = cpf;
         this.especialidade = especialidade;
@@ -66,4 +67,3 @@ public class FuncionarioSaude {
     }
 
 }
-

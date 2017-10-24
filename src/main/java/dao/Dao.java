@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package model.funcionario;
+package dao;
 
 import java.util.List;
-
 
 public interface Dao<D> {
 
@@ -17,7 +11,7 @@ public interface Dao<D> {
     public D recuperar(int codigo);
 
     public void deletar(D d);
-    
+
     public boolean existe(D d);
 
     public List<D> listarTodos();

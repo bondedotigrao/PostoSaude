@@ -1,5 +1,8 @@
-package model.funcionario;
+package model;
 
+import dao.FuncionarioDao;
+import dao.Dao;
+import hibernate.FuncionarioHibernate;
 import java.util.List;
 
 public class FuncionarioSaudeModel {
@@ -10,16 +13,17 @@ public class FuncionarioSaudeModel {
    
     public void cadastrarFuncSaude(FuncionarioSaude func) {
 
-        //if (validarCpf.isCPF(func.getCpf())) {
-            /*if (((FuncionarioDao) dao).RecuperaCpf(func.getCpf()) != null
-                    && (((FuncionarioDao) dao).RecuperaCodigo(func.getCodigo()) != null)) {
-                dao.inserir(func);
-
-            }*/
+       if (validarCpf.isCPF(func.getCpf())) {
+//         
+//            if (((FuncionarioDao) dao).recuperaCpf(func.getCpf()) != null
+//                    && (((FuncionarioDao) dao).recuperaCodigo(func.getCodigo()) != null)) {
+//                dao.inserir(func);
+//
+//            }
             
             if (!((FuncionarioDao)dao).existe(func)){
                 dao.inserir(func);
-     //       }
+            }
         }
 
     }
