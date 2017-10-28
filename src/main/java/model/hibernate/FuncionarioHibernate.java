@@ -1,7 +1,7 @@
-package hibernate;
+package model.hibernate;
 
 import java.util.List;
-import dao.FuncionarioDao;
+import model.InterfaceDao.FuncionarioDao;
 import model.FuncionarioSaude;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -45,8 +45,6 @@ public class FuncionarioHibernate implements FuncionarioDao {
         }
     }
 
-    
-    
     public void alterar(FuncionarioSaude func/*,int codigo*/) {
         Session session = this.sessions.openSession();
         Transaction t = session.beginTransaction();
@@ -54,12 +52,11 @@ public class FuncionarioHibernate implements FuncionarioDao {
         try {
 // nos catchs seria bom colocar pra exibir a mensagem dos erros;
             session.update(func);
-            
+
 //      FuncionarioSaude funcio = session.byId(FuncionarioSaude.class).load(codigo);
 //      funcio.setNome(funcio.getNome());
 //      funcio.setEspecialidade(funcio.getEspecialidade());
 //      session.flush();
-      
             t.commit();
         } catch (Exception e) {
 
@@ -77,9 +74,12 @@ public class FuncionarioHibernate implements FuncionarioDao {
         Session session = this.sessions.openSession();
 
         try {
-            return (FuncionarioSaude) session.getSession().createQuery("From FuncionarioSaude Where id_func=" + codigo).
+
+            return (FuncionarioSaude)session.getSession().createQuery("From FuncionarioSaude Where id_func=" + codigo).
                     getResultList().get(0);
 
+        } catch (Exception e) {
+            return null;
         } finally {
             //Fechamos a sessão
             session.close();
@@ -120,53 +120,40 @@ public class FuncionarioHibernate implements FuncionarioDao {
 
     @Override
     public FuncionarioSaude recuperaCpf(String cpf) {
-        
         Session session = this.sessions.openSession();
-
-        try {
-//            
-           return (FuncionarioSaude) session.getSession()
-                    .createQuery("From FuncionarioSaude Where cpf='" + cpf + "'").getResultList().get(0);
-        }catch(Exception e){
+        try {         
+            return (FuncionarioSaude) session.getSession()
+                    .createQuery("From FuncionarioSaude Where cpf='" +cpf+ "'").getResultList().get(0);
+        } catch (Exception e) {
             return null;
-            
         } finally {
-            //Fechamos a sessão
             session.close();
         }
-      
     }
 
     @Override
     public FuncionarioSaude recuperaCodigo(int codigo) {
-      
         Session session = this.sessions.openSession();
-
         try {
-
-            
-            return (FuncionarioSaude) session.getSession().createQuery("From FuncionarioSaude Where id_func=" + codigo).
+            return (FuncionarioSaude)session.getSession().createQuery("From FuncionarioSaude Where id_func="+codigo).
                     getResultList().get(0);
             
            } catch (Exception e) { 
                 return null; 
         } finally {
-            //Fechamos a sessão
             session.close();
         }
-     
     }
-
-    @Override
-    public boolean existe(FuncionarioSaude func) {
-        
-        if (recuperaCodigo(func.getCodigo()) != null) {
-            return true;
-        }
-        if (recuperaCpf(func.getCpf()) != null) {
-            return true;
-        }
-        return false;
-    }
-
+//
+//    @Override
+//    public boolean existe(FuncionarioSaude func) {
+//        
+//        if (recuperaCodigo(func.getCodigo()) != null) {
+//            return true;
+//        }
+//        if (recuperaCpf(func.getCpf()) != null) {
+//            return true;
+//        }
+//        return false;
+//    }
 }

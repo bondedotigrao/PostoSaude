@@ -7,7 +7,16 @@ import model.FuncionarioSaudeModel;
 
 public class FuncionarioController {
 
-    FuncionarioSaudeModel fsm = new FuncionarioSaudeModel();
+   private static FuncionarioSaudeModel fsm = null;
+    
+    public static FuncionarioSaudeModel getInstance(){
+        if(fsm == null){
+            fsm = new FuncionarioSaudeModel();
+        }
+        
+        return fsm;
+    }
+    
 
     public void registrarFuncionarioSaude(FuncionarioSaude func) {
         fsm.cadastrarFuncSaude(func);

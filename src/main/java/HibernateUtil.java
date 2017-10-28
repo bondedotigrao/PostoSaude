@@ -1,7 +1,7 @@
 
 import org.hibernate.cfg.Configuration;
 import org.hibernate.SessionFactory;
-public class NewHibernateUtil {
+public class HibernateUtil {
 
     private static final SessionFactory sessionFactory;
     
@@ -23,6 +23,6 @@ public class NewHibernateUtil {
     
     
     public static void main(String args[]) {
-        NewHibernateUtil.getSessionFactory();
+        HibernateUtil.getSessionFactory();
     }
 }

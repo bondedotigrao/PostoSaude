@@ -6,7 +6,7 @@ import org.hibernate.Session;
 public class Nova {
   public static void main(String[] args) {
       
-    Session session = NewHibernateUtil.getSessionFactory().openSession();
+    Session session = HibernateUtil.getSessionFactory().openSession();
     session.beginTransaction();
 
     // Check database version
