@@ -1,9 +1,11 @@
 package model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,34 +16,32 @@ public class Paciente {
     @Column(name = "id_paciente")
     @GeneratedValue
     private int id_paciente;
+
     @Column(length = 60)
     private String nome;
     @Column(length = 60)
     private String nomeMae;
-    @Column(length = 16)
+    @Column(length = 20)
     private String cartaoSus;
     @Column(length = 14, unique = true, nullable = false)
     private String cpf;
-    @Column(length = 10)
+    @Column(length = 50)
     private String sexo;
     @Column(length = 3)
     private int idade;
-    @Column(length = 10)
+    @Column(length = 50)
     private String dataNasc;
-    @Column(length = 10)
+    @Column(length = 50)
     private String telefone;
-    @Column(length=8)
-    private String senha;
-    
-    //private Endereco endereco;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Endereco endereco;
 
     public Paciente() {
     }
-    
-    public Paciente(int id_paciente, String nome, String nomeMae,
-            String cartaoSus, String cpf, String sexo, int idade, String dataNasc, 
-            String telefone, String senha /*Endereco enderec*/) {
-        this.id_paciente = id_paciente;
+
+    public Paciente(String nome, String nomeMae, String cartaoSus, String cpf,
+            String sexo, int idade, String dataNasc, String telefone, Endereco endereco) {
+
         this.nome = nome;
         this.nomeMae = nomeMae;
         this.cartaoSus = cartaoSus;
@@ -50,8 +50,7 @@ public class Paciente {
         this.idade = idade;
         this.dataNasc = dataNasc;
         this.telefone = telefone;
-        this.senha = senha;
-        //this.endereco = endereco;
+        this.endereco = endereco;
     }
 
     public int getId_paciente() {
@@ -60,6 +59,14 @@ public class Paciente {
 
     public void setId_paciente(int id_paciente) {
         this.id_paciente = id_paciente;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     public String getNome() {
@@ -125,22 +132,5 @@ public class Paciente {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-//    public Endereco getEndereco() {
-//        return endereco;
-//    }
-//
-//    public void setEndereco(Endereco endereco) {
-//        this.endereco = endereco;
-//    }
-
 
 }

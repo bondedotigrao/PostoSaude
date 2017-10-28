@@ -31,7 +31,7 @@ public class FuncionarioSaude {
         this.nome = nome;
         this.cpf = cpf;
         this.especialidade = especialidade;
-        this.codigo = codigo;
+        // this.codigo = codigo;
     }
 
     public String getNome() {

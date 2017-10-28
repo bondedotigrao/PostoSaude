@@ -10,7 +10,7 @@ public class FuncionarioSaudeModel {
     Dao<FuncionarioSaude> dao = new FuncionarioHibernate();
 
     public void cadastrarFuncSaude(FuncionarioSaude func) {
-        if (((FuncionarioDao)dao).recuperaCpf(func.getCpf()) != null) {
+        if (((FuncionarioDao) dao).recuperaCpf(func.getCpf()) != null) {
             if (((FuncionarioDao) dao).recuperaCodigo(func.getCodigo()) != null) {
                 dao.inserir(func);
             }

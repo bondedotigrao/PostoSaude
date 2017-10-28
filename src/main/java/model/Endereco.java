@@ -25,8 +25,8 @@ public class Endereco {
     @Column(length = 6)
     private int numero;
 
-    public Endereco( String cidade, String cep, String bairro, String rua, int numero) {
-        
+    public Endereco(String cidade, String cep, String bairro, String rua, int numero) {
+
         this.cidade = cidade;
         this.cep = cep;
         this.bairro = bairro;
