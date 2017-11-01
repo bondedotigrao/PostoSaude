@@ -3,7 +3,6 @@ package model.hibernate;
 
 import java.util.List;
 import model.Endereco;
-import model.FuncionarioSaude;
 import model.InterfaceDao.EnderecoDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -120,19 +119,7 @@ public class EnderecoHibernate implements EnderecoDao {
 //        return false;
 //    }
 
-    @Override
-    public Endereco recuperaCep(String cep) {
-        Session session = this.sessions.openSession();
+  
 
-        try {
-            return (Endereco) session.getSession().createQuery("From Endereco Where cep='" + cep + "'").
-                    getResultList().get(0);
-        } catch (Exception e) {
-            return null;
-
-        } finally {
-            //Fechamos a sessão
-            session.close();
-        }
-    }
+    
 }

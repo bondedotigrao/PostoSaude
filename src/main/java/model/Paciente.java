@@ -21,7 +21,7 @@ public class Paciente {
     private String nome;
     @Column(length = 60)
     private String nomeMae;
-    @Column(length = 20)
+    @Column(length = 14, unique = true, nullable = false)
     private String cartaoSus;
     @Column(length = 14, unique = true, nullable = false)
     private String cpf;

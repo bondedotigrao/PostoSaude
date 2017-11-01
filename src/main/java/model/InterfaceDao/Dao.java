@@ -12,7 +12,6 @@ public interface Dao<D> {
 
     public void deletar(D d);
 
-//    public boolean existe(D d);
     public List<D> listarTodos();
 
 }

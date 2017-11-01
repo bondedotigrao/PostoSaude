@@ -121,7 +121,6 @@ public class PacienteHibernate implements PacienteDao {
             return null;
 
         } finally {
-            //Fechamos a sessão
             session.close();
         }
     }
@@ -137,8 +136,9 @@ public class PacienteHibernate implements PacienteDao {
             return null;
 
         } finally {
-            //Fechamos a sessão
             session.close();
         }
     }
+
+   
 }

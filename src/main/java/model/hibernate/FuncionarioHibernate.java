@@ -75,7 +75,7 @@ public class FuncionarioHibernate implements FuncionarioDao {
 
         try {
 
-            return (FuncionarioSaude)session.getSession().createQuery("From FuncionarioSaude Where id_func=" + codigo).
+            return (FuncionarioSaude) session.getSession().createQuery("From FuncionarioSaude Where id_func=" + codigo).
                     getResultList().get(0);
 
         } catch (Exception e) {
@@ -121,9 +121,9 @@ public class FuncionarioHibernate implements FuncionarioDao {
     @Override
     public FuncionarioSaude recuperaCpf(String cpf) {
         Session session = this.sessions.openSession();
-        try {         
+        try {
             return (FuncionarioSaude) session.getSession()
-                    .createQuery("From FuncionarioSaude Where cpf='" +cpf+ "'").getResultList().get(0);
+                    .createQuery("From FuncionarioSaude Where cpf='" + cpf + "'").getResultList().get(0);
         } catch (Exception e) {
             return null;
         } finally {
@@ -131,22 +131,9 @@ public class FuncionarioHibernate implements FuncionarioDao {
         }
     }
 
-    @Override
-    public FuncionarioSaude recuperaCodigo(int codigo) {
-        Session session = this.sessions.openSession();
-        try {
-            return (FuncionarioSaude)session.getSession().createQuery("From FuncionarioSaude Where id_func="+codigo).
-                    getResultList().get(0);
-            
-           } catch (Exception e) { 
-                return null; 
-        } finally {
-            session.close();
-        }
-    }
-//
+
 //    @Override
-//    public boolean existe(FuncionarioSaude func) {
+//   public boolean existe(FuncionarioSaude func) {
 //        
 //        if (recuperaCodigo(func.getCodigo()) != null) {
 //            return true;

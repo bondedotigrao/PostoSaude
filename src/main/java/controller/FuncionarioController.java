@@ -1,22 +1,15 @@
 package controller;
 
-
 import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import model.FuncionarioSaude;
 import model.FuncionarioSaudeModel;
-
+@ManagedBean
+@SessionScoped
 public class FuncionarioController {
 
-   private static FuncionarioSaudeModel fsm = null;
-    
-    public static FuncionarioSaudeModel getInstance(){
-        if(fsm == null){
-            fsm = new FuncionarioSaudeModel();
-        }
-        
-        return fsm;
-    }
-    
+    FuncionarioSaudeModel fsm = new FuncionarioSaudeModel();
 
     public void registrarFuncionarioSaude(FuncionarioSaude func) {
         fsm.cadastrarFuncSaude(func);
@@ -30,11 +23,11 @@ public class FuncionarioController {
         fsm.alterarFuncSaude(func);
     }
 
-    public void recuperarID(FuncionarioSaude func) {
-        fsm.recuperar(func);
+    public FuncionarioSaude recuperarID(Integer codigo) {
+         return fsm.recuperar(codigo);
     }
 
-    public List<FuncionarioSaude> recuperarTodos(FuncionarioSaude func) {
-        return fsm.RecuperarTodos(func);
+    public List<FuncionarioSaude> recuperarTodos() {
+        return fsm.RecuperarTodos();
     }
 }
