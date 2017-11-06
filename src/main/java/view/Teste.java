@@ -2,6 +2,7 @@ package view;
 
 import controller.EnderecoController;
 import controller.FuncionarioController;
+import controller.PacienteController;
 import java.util.List;
 import model.Endereco;
 import model.EnderecoModel;
@@ -33,7 +34,7 @@ public class Teste {
         
         //Endereço:
         
-        //Endereco end = new Endereco("Garanhuns", "55294-209", "Magno", "João Gabiralde Almeida", 55);
+        Endereco end = new Endereco("Garanhuns", "55294-209", "Magno", "João Gabiralde Almeida", 55);
         //EnderecoModel eh = new EnderecoModel();
         //EnderecoController eh = new EnderecoController();
         // eh.deletar(eh.recuperaCep("55294-209"));
@@ -43,9 +44,11 @@ public class Teste {
         
         //Paciente:
         
-        // Paciente paciente = new Paciente("M", "M", "M", "M", "M", 5, "M", "M", end);
+         Paciente paciente = new Paciente("M", "M", "M", "M", "M", 5, "M", "M", end);
         //PacienteHibernate ph = new PacienteHibernate();
         //ph.deletar(ph.recuperar(1));
+        PacienteController pc = new PacienteController();
+        pc.recuperarTodos();
 
     }
 }
