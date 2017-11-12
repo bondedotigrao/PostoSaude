@@ -3,7 +3,7 @@ package controller;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import model.FuncionarioSaude;
+import model.classes.FuncionarioSaude;
 import model.FuncionarioSaudeModel;
 @ManagedBean
 @SessionScoped

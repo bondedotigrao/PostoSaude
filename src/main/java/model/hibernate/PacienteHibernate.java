@@ -2,7 +2,7 @@ package model.hibernate;
 
 import java.util.List;
 import model.InterfaceDao.PacienteDao;
-import model.Paciente;
+import model.classes.Paciente;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -11,12 +11,12 @@ import org.hibernate.cfg.Configuration;
 public class PacienteHibernate implements PacienteDao {
 
     private SessionFactory sessions;
-    private static EnderecoHibernate instance;
+    private static PacienteHibernate instance;
 
-    public static EnderecoHibernate getInstance() {
+    public static PacienteHibernate getInstance() {
 
         if (instance != null) {
-            instance = new EnderecoHibernate();
+            instance = new PacienteHibernate();
         }
 
         return instance;
@@ -99,7 +99,7 @@ public class PacienteHibernate implements PacienteDao {
 
         try {
 
-            return (List) session.getSession().createQuery("from paciente").getResultList();
+            return (List) session.getSession().createQuery("from Paciente").getResultList();
 
         } catch (Exception e) {
             return null;
@@ -130,7 +130,7 @@ public class PacienteHibernate implements PacienteDao {
          Session session = this.sessions.openSession();
 
         try {
-            return (Paciente) session.getSession().createQuery("From Endereco Where cpf='"+cpf+"'").
+            return (Paciente) session.getSession().createQuery("From Paciente Where cpf='"+cpf+"'").
                     getResultList().get(0);
         } catch (Exception e) {
             return null;

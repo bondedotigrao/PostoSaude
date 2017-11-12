@@ -1,6 +1,6 @@
 package model.InterfaceDao;
 
-import model.FuncionarioSaude;
+import model.classes.FuncionarioSaude;
 
 public interface FuncionarioDao extends Dao<FuncionarioSaude> {
 

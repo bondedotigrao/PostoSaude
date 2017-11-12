@@ -1,5 +1,6 @@
 package model;
 
+import model.classes.FuncionarioSaude;
 import model.InterfaceDao.FuncionarioDao;
 import model.InterfaceDao.Dao;
 import model.hibernate.FuncionarioHibernate;

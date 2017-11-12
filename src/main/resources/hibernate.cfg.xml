@@ -8,9 +8,11 @@
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.connection.password">1</property>
     <!--Mapeamento-->
-    
-    <mapping class="model.FuncionarioSaude"/>
-    <mapping class="model.Endereco"/>
-    <mapping class="model.Paciente"/>
+    <property name="hibernate.hbm2ddl.auto">create</property>
+    <mapping class="model.classes.FuncionarioSaude"/>
+    <mapping class="model.classes.Endereco"/>
+    <mapping class="model.classes.Paciente"/>
+    <mapping class="model.classes.Posto"/>
+    <mapping class="model.classes.AgendamentoConsultas"/>
   </session-factory>
 </hibernate-configuration>

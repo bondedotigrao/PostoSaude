@@ -1,5 +1,6 @@
-package model;
+package model.classes;
 
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,15 +22,14 @@ public class Posto {
     @OneToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
     @OneToMany(cascade=CascadeType.ALL)
-    private FuncionarioSaude funcSaude;
+    private List<FuncionarioSaude> funcSaude;
 
-    public Posto(int codigo, String nome, Endereco endereco, FuncionarioSaude funcSaude) {
+    public Posto(String nome, Endereco endereco, List<FuncionarioSaude> funcSaude) {
         this.codigo = codigo;
         this.nome = nome;
         this.endereco = endereco;
         this.funcSaude = funcSaude;
     }
-
     public Posto() {
     }
     
@@ -58,13 +58,15 @@ public class Posto {
         this.endereco = endereco;
     }
 
-    public FuncionarioSaude getFuncSaude() {
+    public List<FuncionarioSaude> getFuncSaude() {
         return funcSaude;
     }
 
-    public void setFuncSaude(FuncionarioSaude funcSaude) {
+    public void setFuncSaude(List<FuncionarioSaude> funcSaude) {
         this.funcSaude = funcSaude;
     }
+
+   
     
     
 }

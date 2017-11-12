@@ -1,6 +1,6 @@
 package model.InterfaceDao;
 
-import model.Paciente;
+import model.classes.Paciente;
 
 public interface PacienteDao extends Dao<Paciente> {
 

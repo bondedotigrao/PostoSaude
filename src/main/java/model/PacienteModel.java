@@ -1,5 +1,6 @@
 package model;
 
+import model.classes.Paciente;
 import java.util.List;
 import model.InterfaceDao.Dao;
 import model.InterfaceDao.PacienteDao;

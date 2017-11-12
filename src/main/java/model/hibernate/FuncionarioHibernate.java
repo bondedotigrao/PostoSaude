@@ -2,7 +2,7 @@ package model.hibernate;
 
 import java.util.List;
 import model.InterfaceDao.FuncionarioDao;
-import model.FuncionarioSaude;
+import model.classes.FuncionarioSaude;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

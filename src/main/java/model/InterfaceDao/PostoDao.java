@@ -1,8 +1,8 @@
 package model.InterfaceDao;
 
-import model.Posto;
+import model.classes.Posto;
 
 public interface PostoDao extends Dao<Posto> {
 
-    public Posto retornaNome(String nome);
+    
 }

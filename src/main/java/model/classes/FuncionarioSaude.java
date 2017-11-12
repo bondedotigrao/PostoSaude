@@ -1,9 +1,12 @@
-package model;
+package model.classes;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,16 +25,27 @@ public class FuncionarioSaude {
     private String cpf;
     @Column(length = 50)
     private String especialidade;
+    @ManyToOne
+    private Posto posto;
 
     public FuncionarioSaude() {
 
     }
 
-    public FuncionarioSaude(String nome, String cpf, String especialidade) {
+    public FuncionarioSaude(String nome, String cpf, String especialidade, Posto posto) {
         this.nome = nome;
         this.cpf = cpf;
         this.especialidade = especialidade;
+        this.posto = posto;
         // this.codigo = codigo;
+    }
+
+    public Posto getPosto() {
+        return posto;
+    }
+
+    public void setPosto(Posto posto) {
+        this.posto = posto;
     }
 
     public String getNome() {
