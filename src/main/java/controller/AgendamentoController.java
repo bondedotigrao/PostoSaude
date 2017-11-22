@@ -12,7 +12,7 @@ import model.classes.AgendamentoConsultas;
 public class AgendamentoController {
     AgendamentoModel ac = new AgendamentoModel();
     
-    public void registrarPaciente(AgendamentoConsultas agend) {
+    public void registrarAgendamento(AgendamentoConsultas agend) {
         ac.cadastrarAgendamento(agend);
     }
     

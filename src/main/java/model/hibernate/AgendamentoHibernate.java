@@ -35,7 +35,7 @@ public class AgendamentoHibernate implements AgendamentoDao {
        Session session = this.sessions.openSession();
 
         try {
-            return (AgendamentoConsultas) session.getSession().createQuery("From AgendamentoConsultas Where ='"+data+"'").
+            return (AgendamentoConsultas) session.getSession().createQuery("From AgendamentoConsultas Where data='"+data+"'").
                     getResultList().get(0);
         } catch (Exception e) {
             return null;

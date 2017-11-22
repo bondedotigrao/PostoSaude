@@ -64,7 +64,7 @@ public class PacienteHibernate implements PacienteDao {
         Session session = this.sessions.openSession();
 
         try {
-            return (Paciente) session.getSession().createQuery("From Endereco Where id_paciente=" + codigo).
+            return (Paciente) session.getSession().createQuery("From Paciente Where id_paciente=" + codigo).
                     getResultList().get(0);
         } catch (Exception e) {
             return null;

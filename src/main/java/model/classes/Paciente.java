@@ -16,7 +16,6 @@ public class Paciente {
     @Column(name = "id_paciente")
     @GeneratedValue
     private int id_paciente;
-
     @Column(length = 60)
     private String nome;
     @Column(length = 60)

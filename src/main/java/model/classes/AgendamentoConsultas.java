@@ -1,8 +1,10 @@
 package model.classes;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -15,21 +17,19 @@ public class AgendamentoConsultas {
     @GeneratedValue
     private int codigo;
     @Column
-    private String data;
-    @Column
-    private String horario;
+    private Date data;
     @OneToOne
     private FuncionarioSaude func;
     @OneToOne
-    private Posto posto;
+    private Paciente paciente;    
     @ManyToOne
-    private Paciente paciente;
+    @JoinColumn(name = "posto_id")
+    private Posto posto;
+    
 
-    public AgendamentoConsultas(String data, String horario, FuncionarioSaude func, Posto posto, Paciente paciente) {
+    public AgendamentoConsultas(Date data, FuncionarioSaude func, Paciente paciente) {
         this.data = data;
-        this.horario = horario;
         this.func = func;
-        this.posto = posto;
         this.paciente = paciente;
     }
 
@@ -44,36 +44,13 @@ public class AgendamentoConsultas {
         this.codigo = codigo;
     }
 
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public String getHorario() {
-        return horario;
-    }
-
-    public void setHorario(String horario) {
-        this.horario = horario;
-    }
-
+   
     public FuncionarioSaude getFunc() {
         return func;
     }
 
     public void setFunc(FuncionarioSaude func) {
         this.func = func;
-    }
-
-    public Posto getPosto() {
-        return posto;
-    }
-
-    public void setPosto(Posto posto) {
-        this.posto = posto;
     }
 
     public Paciente getPaciente() {
@@ -83,7 +60,20 @@ public class AgendamentoConsultas {
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
     
-    
-    
+    public Posto getPosto() {
+        return posto;
+    }
+
+    public void setPosto(Posto posto) {
+        this.posto = posto;
+    }    
 }

@@ -66,8 +66,9 @@ public class PostoHibernate implements PostoDao {
         Session session = this.sessions.openSession();
 
         try {
-            return (Posto) session.getSession().createQuery("From Posto Where codigo=" + codigo).
-                    getResultList().get(0);
+            return (Posto)session.get(Posto.class, codigo);
+            /*return (Posto) session.getSession().createQuery("From Posto Where codigo=" + codigo).
+                    getResultList().get(0);*/
         } catch (Exception e) {
             return null;
 

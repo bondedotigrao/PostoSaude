@@ -4,6 +4,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -21,16 +22,31 @@ public class Posto {
     private String nome;
     @OneToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
-    @OneToMany(cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "posto", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     private List<FuncionarioSaude> funcSaude;
+    @OneToMany(mappedBy = "posto", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    //@LazyCollection(LazyCollectionOption.FALSE)
+    private List<AgendamentoConsultas> agendamentos;
 
-    public Posto(String nome, Endereco endereco, List<FuncionarioSaude> funcSaude) {
-        this.codigo = codigo;
+    public Posto(String nome, Endereco endereco, List<FuncionarioSaude> funcSaude, List<AgendamentoConsultas> agendamentos) {
+       // this.codigo = codigo;
         this.nome = nome;
         this.endereco = endereco;
         this.funcSaude = funcSaude;
+        this.agendamentos = agendamentos;
     }
+
+   
     public Posto() {
+        
+    }
+
+    public List<AgendamentoConsultas> getAgendamentos() {
+        return agendamentos;
+    }
+
+    public void setAgendamentos(List<AgendamentoConsultas> agendamentos) {
+        this.agendamentos = agendamentos;
     }
     
 
@@ -65,8 +81,4 @@ public class Posto {
     public void setFuncSaude(List<FuncionarioSaude> funcSaude) {
         this.funcSaude = funcSaude;
     }
-
-   
-    
-    
 }
