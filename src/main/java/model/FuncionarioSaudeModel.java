@@ -5,7 +5,7 @@ import model.InterfaceDao.FuncionarioDao;
 import model.InterfaceDao.Dao;
 import model.hibernate.FuncionarioHibernate;
 import java.util.List;
-import model.InterfaceDao.PacienteDao;
+
 
 public class FuncionarioSaudeModel {
 
@@ -51,5 +51,4 @@ public class FuncionarioSaudeModel {
 
         return ((FuncionarioDao) dao).recuperaCpf(cpf);
     }
-
 }
