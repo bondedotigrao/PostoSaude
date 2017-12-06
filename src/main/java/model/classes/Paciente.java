@@ -1,5 +1,8 @@
 package model.classes;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,7 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
+@ManagedBean
+@RequestScoped
 @Entity
 @Table
 public class Paciente {
@@ -26,27 +30,26 @@ public class Paciente {
     private String cpf;
     @Column(length = 50)
     private String sexo;
-    @Column(length = 3)
-    private int idade;
     @Column(length = 50)
     private String dataNasc;
     @Column(length = 50)
     private String telefone;
     @OneToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
-
+    
+    @Deprecated
     public Paciente() {
     }
 
     public Paciente(String nome, String nomeMae, String cartaoSus, String cpf,
-            String sexo, int idade, String dataNasc, String telefone, Endereco endereco) {
+            String sexo, String dataNasc, String telefone, Endereco endereco) {
 
         this.nome = nome;
         this.nomeMae = nomeMae;
         this.cartaoSus = cartaoSus;
         this.cpf = cpf;
         this.sexo = sexo;
-        this.idade = idade;
+       
         this.dataNasc = dataNasc;
         this.telefone = telefone;
         this.endereco = endereco;
@@ -108,14 +111,7 @@ public class Paciente {
         this.sexo = sexo;
     }
 
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
-
+   
     public String getDataNasc() {
         return dataNasc;
     }

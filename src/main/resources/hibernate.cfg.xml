@@ -9,7 +9,7 @@
     <property name="hibernate.connection.password">1</property>
     <!--Mapeamento-->
   
-    <property name="hibernate.hbm2ddl.auto">create</property>
+    
     
     <mapping class="model.classes.FuncionarioSaude"/>
     <mapping class="model.classes.Endereco"/>

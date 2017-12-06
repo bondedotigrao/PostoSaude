@@ -4,10 +4,139 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Cadastro do Paciente</title>
     </h:head>
     <h:body>
+        <h:form id="CadPaciente">
+
+            <p:growl life="4000" showDetail="true" 
+                     showSummary="true" sticky="true"/>
+
+            <p:fieldset id="fieldCad" legend="Cadastro de Paciente">
+
+                <p:panelGrid columns="4">
+
+                    <!-- Nome do Paciente-->
+                    <h:outputText value="Nome*:"/>
+                    <p:inputText id="txtNome" value="#{pacienteController.cadPaciente.nome}" required="true"
+                                 requiredMessage="Campo Obrigatório!"/>
+                    <p:message for='txtNome' />
+
+                    <!-- CPF do Paciente-->
+                    <h:outputText value="CPF*:"/>
+                    <p:inputMask id="txtCPF" value="#{pacienteController.cadPaciente.cpf}" mask="999.999.999-99" required="true"
+                                 requiredMessage="Seu fresco! tá faltando o CPF"/>
+                    <p:message for='txtCPF' />
+
+                    <!-- Cartão do Sus do Paciente-->
+                    <h:outputText value="Cartão do SUS*:"/>
+                    <p:inputText id="txtSUS" value="#{pacienteController.cadPaciente.cartaoSus}" required="true"
+                                 requiredMessage="Campo Obrigatório!"/>
+                    <p:message for='txtSUS' /> 
+
+                    <!-- Nome da Mãe do Paciente-->
+                    <h:outputText value="Nome da Mãe*:"/>
+                    <p:inputText id="txtNomeMae" value="#{pacienteController.cadPaciente.nomeMae}" required="true"
+                                 requiredMessage="Campo Obrigatório!"/>
+                    <p:message for='txtNomeMae' />
+
+                    <!-- Data Nascimento do Paciente-->
+                    <h:outputText value="Data de Nascimento*:"/>
+                    <p:inputMask id="txtdate" value="#{pacienteController.cadPaciente.dataNasc}" mask="99/99/9999" required="true"
+                                 requiredMessage="Campo Obrigatório!"/>
+                    <p:message for='txtdate' />
+
+
+
+                    <!-- Sexo do Paciente-->
+                    <h:outputText value="Sexo*:"/>
+                    <p:inputText id="txtSexo" value="#{pacienteController.cadPaciente.sexo}" required="true"
+                                 requiredMessage="Campo Obrigatório!"/>
+                    <p:message for='txtSexo' />
+
+                    <!-- Telefone  do Paciente-->
+                    <h:outputText value="Telefone*:"/>
+                    <p:inputMask id="txtPhone" value="#{pacienteController.cadPaciente.telefone}" mask="(99) 9.9999-9999" required="true"
+                                 requiredMessage="Campo Obrigatório!"/>
+                    <p:message for='txtPhone' />
+
+                </p:panelGrid>
+
+
+
+            </p:fieldset>
        
+
+        <!-- ENDEREÇO-->
+
+       
+
+            <p:growl life="4000" showDetail="true" 
+                     showSummary="true" sticky="true"/>
+
+            <p:fieldset id="fieldCadEnd" legend="Endereço">
+
+                <p:panelGrid columns="4">
+
+                    <!-- Cidade-->
+                    <h:outputText value="Cidade*:"/>
+                    <p:inputText id="txtCidade" value="#{pacienteController.cadPaciente.endereco.cidade}" required="true"
+                                 requiredMessage="Campo Obrigatório!"/>
+                    <p:message for='txtCidade' />
+
+                    <!-- CEP-->
+                    <h:outputText value="CEP:*"/>
+                    <p:inputMask id="txtCEP" value="#{pacienteController.cadPaciente.endereco.cep}" mask="99999-999" required="true"
+                                 requiredMessage="Campo Obrigatório!"/>
+                    <p:message for='txtCEP' />
+
+                    <!-- Bairro-->
+                    <h:outputText value="Bairro*:"/>
+                    <p:inputText id="txtSUS" value="#{pacienteController.cadPaciente.endereco.bairro}" required="true"
+                                 requiredMessage="Campo Obrigatório!"/>
+                    <p:message for='txtSUS' /> 
+
+                    <!-- Rua -->
+                    <h:outputText value="Rua*:"/>
+                    <p:inputText id="txtRua" value="#{pacienteController.cadPaciente.endereco.rua}" required="true"
+                                 requiredMessage="Campo Obrigatório!"/>
+                    <p:message for='txtRua' />
+
+                    <!-- Número da casa-->
+                    <h:outputText value="Nº*:"/>
+                    <p:inputText id="txtN" value="#{pacienteController.cadPaciente.endereco.numero}" required="true"
+                                 requiredMessage="Campo Obrigatório!"/>
+                    <p:message for='txtN' />
+
+
+
+                    <!-- Complemento-->
+                    <h:outputText value="Complemento:"/>
+                    <p:inputText id="txtCompl" value="#{pacienteController.cadPaciente.endereco.complemento}" />
+                    <p:message for='txtCompl' />
+                </p:panelGrid>
+                
+                <!-- Botão-->
+                <p:commandButton value="cadastrar" oncomplete="PF('wiDdialConfirmCadPaciente').show()"/>
+
+
+            </p:fieldset>
+            <p:messages/> 
+            
+            <!-- Botão de confirmação!!-->
+             <p:dialog id="dialConfirmCadPaciente" visible="false" resizable="false"
+                      modal="true" widgetVar="wiDdialConfirmCadPaciente" header="atenção!">
+                
+                <h:outputText value="Deseja realmente cadastrar o paciente?"/><br/>
+                <p:commandButton value="sim" action="#{pacienteController.registrarPaciente()}"
+                                 update=":formCadPaciente" oncomplete="PF('wiDdialConfirmCadPaciente').hide();" />
+                <p:commandButton value="não" oncomplete="PF('wiDdialConfirmCadPaciente').hide()"/>
+                
+            </p:dialog>
+        </h:form>
+
+
+
     </h:body>
 </html>
 
