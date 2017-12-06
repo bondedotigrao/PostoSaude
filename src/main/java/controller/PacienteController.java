@@ -9,8 +9,14 @@ import model.PacienteModel;
 @ManagedBean
 @SessionScoped
 public class PacienteController {
-
     PacienteModel pm = new PacienteModel();
+    private Paciente selectdPaciente;
+    
+    public PacienteController() {
+       
+
+    }
+    
     
     public void registrarPaciente(Paciente paciente) {
         pm.inserir(paciente);
