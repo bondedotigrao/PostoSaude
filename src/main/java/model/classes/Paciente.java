@@ -39,6 +39,8 @@ public class Paciente {
     
     @Deprecated
     public Paciente() {
+        
+        this.endereco = new Endereco();
     }
 
     public Paciente(String nome, String nomeMae, String cartaoSus, String cpf,
@@ -127,5 +129,6 @@ public class Paciente {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+    
 
 }

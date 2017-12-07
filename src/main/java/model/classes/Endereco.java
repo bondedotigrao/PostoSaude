@@ -24,6 +24,7 @@ public class Endereco {
     private String rua;
     @Column(length = 6)
     private int numero;
+     @Column
     private String complemento;
 
     public Endereco(String cidade, String cep, String bairro, String rua, int numero,String complemento) {

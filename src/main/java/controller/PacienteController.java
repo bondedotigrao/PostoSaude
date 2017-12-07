@@ -28,6 +28,9 @@ public class PacienteController {
         
         return "index.xhtml";
     }
+    
+   
+    
     public void removerPaciente(Paciente paciente){
         this.instance.deletar(paciente);
     }
