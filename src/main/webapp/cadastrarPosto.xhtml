@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Cadastro de Posto</title>
+    </h:head>
+    <h:body>
+
+        <ui:composition template="templateAdm.xhtml">
+    <ui:define name="co" >
+        <h:form id="CadPosto">
+            <p:growl life="4000" showDetail="true" 
+                     showSummary="true" sticky="true"/>
+            <p:fieldset id="fieldCad" legend="Cadastro do Posto">
+
+                <p:panelGrid columns="3">
+
+
+                    <h:outputText value="Nome*:"/>
+                    <p:inputText id="txtNome" value="#{postoController.cadPosto.nome}" required="true"
+                                 requiredMessage="Campo Obrigatório!"/>
+                    <p:message for='txtNome' />
+
+                </p:panelGrid>
+
+
+
+            </p:fieldset>
+
+
+
+
+
+
+
+            <p:fieldset id="fieldCadEnd" legend="Endereço">
+
+                <p:panelGrid columns="3">
+
+                    <h:outputText value="Cidade*:"/>
+                    <p:inputText id="txtCidade" value="#{postoController.cadPosto.endereco.cidade}" required="true"
+                                 requiredMessage="Campo Obrigatório!"/>
+                    <p:message for='txtCidade' />
+
+                    <h:outputText value="CEP:*"/>
+                    <p:inputMask id="txtCEP" value="#{postoController.cadPosto.endereco.cep}" mask="99999-999" required="true"
+                                 requiredMessage="Campo Obrigatório!"/>
+                    <p:message for='txtCEP' />
+
+                    <h:outputText value="Bairro*:"/>
+                    <p:inputText id="txtBairro" value="#{postoController.cadPosto.endereco.bairro}" required="true"
+                                 requiredMessage="Campo Obrigatório!"/>
+                    <p:message for='txtBairro' /> 
+
+                    <h:outputText value="Rua*:"/>
+                    <p:inputText id="txtRua" value="#{postoController.cadPosto.endereco.rua}" required="true"
+                                 requiredMessage="Campo Obrigatório!"/>
+                    <p:message for='txtRua' />
+
+                    <h:outputText value="Nº*:"/>
+                    <p:inputText id="txtN" value="#{postoController.cadPosto.endereco.numero}" required="true"
+                                 requiredMessage="Campo Obrigatório!"/>
+                    <p:message for='txtN' />
+
+
+
+                    <h:outputText value="Complemento:"/>
+                    <p:inputText id="txtCompl" value="#{postoController.cadPosto.endereco.complemento}" />
+                    <p:message for='txtCompl' />
+                </p:panelGrid>
+
+                <p:commandButton value="cadastrar" action="#{postoController.registrarPosto()}"
+                                 update="CadPosto" />
+
+
+            </p:fieldset>
+            <p:messages/> 
+
+
+        </h:form>
+    
+    </ui:define>
+    </ui:composition>
+
+    </h:body>
+</html>
+

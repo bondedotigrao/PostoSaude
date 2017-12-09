@@ -9,78 +9,98 @@
         <title>Apresenta Paciente</title>
     </h:head>
     <h:body>
-        <ui:composition template="Template.xhtml">
-            <ui:define name="conteudo" >
-        
-        <h:form id="formApresentaPaciente">
-            <p:dataTable id="tablePaciente" var="item" value="#{pacienteController.recuperarTodos()}"
-                         rowKey="#{item.id_paciente}" selectionMode="single" selection="#{pacienteController.selectdPaciente}">
-                
-                <f:facet name="header">
-                    Paciente Cadastrados
-                </f:facet>
-             
-                <p:column headerText="Codigo" >
-                    #{item.id_paciente}
-                </p:column>
-                
-               <p:column>
-                <f:facet name="header">Nome</f:facet>
-                    #{item.nome}
-                </p:column> 
-                
-                <p:column>
-                <f:facet name="header">Nome da Mãe</f:facet>
-                    #{item.nomeMae}
-                </p:column> 
-                
-                <p:column>
-                    <f:facet name="header">CPF</f:facet>
-                    #{item.cpf}
-                </p:column>
-                
-                 <p:column>
-                <f:facet name="header">Cartão dos SUS</f:facet>
-                    #{item.cartaoSus}
-                </p:column>
-                
-               <p:column>
-                <f:facet name="header">Data de Nascimento</f:facet>
-                    #{item.dataNasc}
-                </p:column> 
-                
-                <p:column>
-                <f:facet name="header">Cidade</f:facet>
-                    #{item.endereco.cidade}
-                </p:column> 
-                
-                 <p:column>
-                <f:facet name="header">CEP</f:facet>
-                    #{item.endereco.cep}
-                </p:column> 
-                 
-                 <p:column>
-                <f:facet name="header">Bairro</f:facet>
-                    #{item.endereco.bairro}
-                </p:column> 
-                
-                 <p:column>
-                <f:facet name="header">Rua</f:facet>
-                    #{item.endereco.rua}
-                </p:column>
-                
-                <p:column>
-                <f:facet name="header">Número</f:facet>
-                    #{item.endereco.numero}
-                </p:column>
-                
-            </p:dataTable>
-            <p:commandButton id="comeBack" value="Voltar" action="#{pacienteController.voltar()}" />      
-                
-        </h:form>
+        <ui:composition template="templateAdm.xhtml">
+            <ui:define name="Conteudo" >
+
+                <h:form id="formApresentaPaciente">
+                    <p:dataTable id="tablePaciente" var="item" value="#{pacienteController.recuperarTodos()}"
+                                 rowKey="#{item.id_paciente}" selectionMode="single" selection="#{pacienteController.selectdPaciente}">
+
+                        <f:facet name="header">
+                            Pacientes Cadastrados
+                        </f:facet>
+
+                        <p:column headerText="Codigo" >
+                            #{item.id_paciente}
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">Nome</f:facet>
+                                #{item.nome}
+                        </p:column> 
+
+                       
+
+                        <p:column>
+                            <f:facet name="header">CPF</f:facet>
+                                #{item.cpf}
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">Cartão dos SUS</f:facet>
+                                #{item.cartaoSus}
+                        </p:column>
+
+                     </p:dataTable>
+
+                   
+                    <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaPaciente').show()"
+                                     />
+
+                    <p:dialog id="dialVisualizaPaciente" visible="false" modal="true" header="Paciente Cadastrado"
+                              resizable="false" widgetVar="widDialVisualizaPaciente">
+                        <p:panelGrid columns="2">
+                            <h:outputText value="Código:"/>
+                            <h:outputText value="#{pacienteController.selectdPaciente.id_paciente}"/>
+
+                            <h:outputText value="Nome:"/>
+                            <h:outputText value="#{pacienteController.selectdPaciente.nome}"/>
+
+                            <h:outputText value="Nome da Mãe:"/>
+                            <h:outputText value="#{pacienteController.selectdPaciente.nomeMae}"/>
+
+                            <h:outputText value="Cartão do Sus"/>
+                            <h:outputText value="#{pacienteController.selectdPaciente.cartaoSus}"/>
+
+                            <h:outputText value="CPF:"/>
+                            <h:outputText value="#{pacienteController.selectdPaciente.cpf}"/>
+
+                            <h:outputText value="Data de Nascimento:"/>
+                            <h:outputText value="#{pacienteController.selectdPaciente.dataNasc}"/>
+
+                            <h:outputText value="Sexo:"/>
+                            <h:outputText value="#{pacienteController.selectdPaciente.sexo}"/>
+
+                            <h:outputText value="Telefone:"/>
+                            <h:outputText value="#{pacienteController.selectdPaciente.telefone}"/>
+
+
+
+                            <h:outputText value="Cidade:"/>
+                            <h:outputText value="#{pacienteController.selectdPaciente.endereco.cidade}"/>
+
+                            <h:outputText value="Bairro:"/>
+                            <h:outputText value="#{pacienteController.selectdPaciente.endereco.bairro}"/>
+
+                            <h:outputText value="CEP:"/>
+                            <h:outputText value="#{pacienteController.selectdPaciente.endereco.cep}"/>
+
+                            <h:outputText value="Rua:"/>
+                            <h:outputText value="#{pacienteController.selectdPaciente.endereco.rua}"/>
+
+                            <h:outputText value="Número:"/>
+                            <h:outputText value="#{pacienteController.selectdPaciente.endereco.numero}"/>
+
+                            <h:outputText value="Complemento:"/>
+                            <h:outputText value="#{pacienteController.selectdPaciente.endereco.complemento}"/>
+
+                        </p:panelGrid>
+                      
+                    </p:dialog>
+                </h:form>
             </ui:define>
-            </ui:composition>
-        
+        </ui:composition>
+
     </h:body>
 </html>
 

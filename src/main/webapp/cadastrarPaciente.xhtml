@@ -2,128 +2,129 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Cadastro do Paciente</title>
     </h:head>
     <h:body>
-        <h:form id="CadPaciente">
+        <ui:composition template="templateLogin.xhtml">
+            <ui:define name="co" >
+                <h:form id="CadPaciente">
+                   <p:growl life="4000" showDetail="true" 
+                             showSummary="true" sticky="true"/>
+                    <p:fieldset id="fieldCad" legend="Cadastro de Paciente">
 
-            <p:growl life="4000" showDetail="true" 
-                     showSummary="true" sticky="true"/>
+                        <p:panelGrid columns="3">
+                               
 
-            <p:fieldset id="fieldCad" legend="Cadastro de Paciente">
-
-                <p:panelGrid columns="3">
-
-                   
-                    <h:outputText value="Nome*:"/>
-                    <p:inputText id="txtNome" value="#{pacienteController.cadPaciente.nome}" required="true"
-                                 requiredMessage="Campo Obrigatório!"/>
-                    <p:message for='txtNome' />
-
-                    
-                    <h:outputText value="CPF*:"/>
-                    <p:inputMask id="txtCPF" value="#{pacienteController.cadPaciente.cpf}" mask="999.999.999-99" required="true"
-                                 requiredMessage="Seu fresco! tá faltando o CPF"/>
-                    <p:message for='txtCPF' />
-
-                    
-                    <h:outputText value="Cartão do SUS*:"/>
-                    <p:inputText id="txtSUS" value="#{pacienteController.cadPaciente.cartaoSus}" required="true"
-                                 requiredMessage="Campo Obrigatório!"/>
-                    <p:message for='txtSUS' /> 
-
-                                        <h:outputText value="Nome da Mãe*:"/>
-                    <p:inputText id="txtNomeMae" value="#{pacienteController.cadPaciente.nomeMae}" required="true"
-                                 requiredMessage="Campo Obrigatório!"/>
-                    <p:message for='txtNomeMae' />
-
-                    
-                    <h:outputText value="Data de Nascimento*:"/>
-                    <p:inputMask id="txtdate" value="#{pacienteController.cadPaciente.dataNasc}" mask="99/99/9999" required="true"
-                                 requiredMessage="Campo Obrigatório!"/>
-                    <p:message for='txtdate' />
+                            <h:outputText value="Nome*:"/>
+                            <p:inputText id="txtNome" value="#{pacienteController.cadPaciente.nome}" required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtNome' />
 
 
+                            <h:outputText value="CPF*:"/>
+                            <p:inputMask id="txtCPF" value="#{pacienteController.cadPaciente.cpf}" mask="999.999.999-99" required="true"
+                                         requiredMessage="Seu fresco! tá faltando o CPF"/>
+                            <p:message for='txtCPF' />
 
-                    <h:outputText value="Sexo*:"/>
-                    <p:inputText id="txtSexo" value="#{pacienteController.cadPaciente.sexo}" required="true"
-                                 requiredMessage="Campo Obrigatório!"/>
-                    <p:message for='txtSexo' />
 
-                    
-                    <h:outputText value="Telefone*:"/>
-                    <p:inputMask id="txtPhone" value="#{pacienteController.cadPaciente.telefone}" mask="(99) 9.9999-9999" required="true"
-                                 requiredMessage="Campo Obrigatório!"/>
-                    <p:message for='txtPhone' />
+                            <h:outputText value="Cartão do SUS*:"/>
+                            <p:inputText id="txtSUS" value="#{pacienteController.cadPaciente.cartaoSus}" required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtSUS' /> 
 
-                </p:panelGrid>
+                            <h:outputText value="Nome da Mãe*:"/>
+                            <p:inputText id="txtNomeMae" value="#{pacienteController.cadPaciente.nomeMae}" required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtNomeMae' />
+
+
+                            <h:outputText value="Data de Nascimento*:"/>
+                            <p:inputMask id="txtdate" value="#{pacienteController.cadPaciente.dataNasc}" mask="99/99/9999" required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtdate' />
 
 
 
-            </p:fieldset>
-       
+                            <h:outputText value="Sexo*:"/>
+                            <p:inputText id="txtSexo" value="#{pacienteController.cadPaciente.sexo}" required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtSexo' />
 
 
-       
+                            <h:outputText value="Telefone*:"/>
+                            <p:inputMask id="txtPhone" value="#{pacienteController.cadPaciente.telefone}" mask="(99) 9.9999-9999" required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtPhone' />
 
-          
-
-            <p:fieldset id="fieldCadEnd" legend="Endereço">
-
-                <p:panelGrid columns="3">
-
-                    <h:outputText value="Cidade*:"/>
-                    <p:inputText id="txtCidade" value="#{pacienteController.cadPaciente.endereco.cidade}" required="true"
-                                 requiredMessage="Campo Obrigatório!"/>
-                    <p:message for='txtCidade' />
-
-                    <h:outputText value="CEP:*"/>
-                    <p:inputMask id="txtCEP" value="#{pacienteController.cadPaciente.endereco.cep}" mask="99999-999" required="true"
-                                 requiredMessage="Campo Obrigatório!"/>
-                    <p:message for='txtCEP' />
-
-                    <h:outputText value="Bairro*:"/>
-                    <p:inputText id="txtBairro" value="#{pacienteController.cadPaciente.endereco.bairro}" required="true"
-                                 requiredMessage="Campo Obrigatório!"/>
-                    <p:message for='txtBairro' /> 
-
-                    <h:outputText value="Rua*:"/>
-                    <p:inputText id="txtRua" value="#{pacienteController.cadPaciente.endereco.rua}" required="true"
-                                 requiredMessage="Campo Obrigatório!"/>
-                    <p:message for='txtRua' />
-
-                    <h:outputText value="Nº*:"/>
-                    <p:inputText id="txtN" value="#{pacienteController.cadPaciente.endereco.numero}" required="true"
-                                 requiredMessage="Campo Obrigatório!"/>
-                    <p:message for='txtN' />
+                        </p:panelGrid>
 
 
 
-                    <h:outputText value="Complemento:"/>
-                    <p:inputText id="txtCompl" value="#{pacienteController.cadPaciente.endereco.complemento}" />
-                    <p:message for='txtCompl' />
-                </p:panelGrid>
-                
-                <p:commandButton value="cadastrar" oncomplete="PF('wiDdialConfirmCadPaciente').show()"/>
+                    </p:fieldset>
 
 
-            </p:fieldset>
-            <p:messages/> 
-            
-             <p:dialog id="dialConfirmCadPaciente" visible="false" resizable="false"
-                      modal="true" widgetVar="wiDdialConfirmCadPaciente" header="atenção!">
-                
-                <h:outputText value="Deseja realmente cadastrar o paciente?"/><br/>
-                <p:commandButton value="sim" action="#{pacienteController.registrarPaciente()}"
-                                 update="CadPaciente" oncomplete="PF('wiDdialConfirmCadPaciente').hide();" />
-                <p:commandButton value="não" oncomplete="PF('wiDdialConfirmCadPaciente').hide()"/>
-                
-            </p:dialog>
-        </h:form>
 
 
+
+
+
+                    <p:fieldset id="fieldCadEnd" legend="Endereço">
+
+                        <p:panelGrid columns="3">
+
+                            <h:outputText value="Cidade*:"/>
+                            <p:inputText id="txtCidade" value="#{pacienteController.cadPaciente.endereco.cidade}" required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtCidade' />
+
+                            <h:outputText value="CEP:*"/>
+                            <p:inputMask id="txtCEP" value="#{pacienteController.cadPaciente.endereco.cep}" mask="99999-999" required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtCEP' />
+
+                            <h:outputText value="Bairro*:"/>
+                            <p:inputText id="txtBairro" value="#{pacienteController.cadPaciente.endereco.bairro}" required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtBairro' /> 
+
+                            <h:outputText value="Rua*:"/>
+                            <p:inputText id="txtRua" value="#{pacienteController.cadPaciente.endereco.rua}" required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtRua' />
+
+                            <h:outputText value="Nº*:"/>
+                            <p:inputText id="txtN" value="#{pacienteController.cadPaciente.endereco.numero}" required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtN' />
+
+
+
+                            <h:outputText value="Complemento:"/>
+                            <p:inputText id="txtCompl" value="#{pacienteController.cadPaciente.endereco.complemento}" />
+                            <p:message for='txtCompl' />
+                        </p:panelGrid>
+
+                        <p:commandButton value="cadastrar" action="#{pacienteController.registrarPaciente()}" oncomplete="PF('wiDdialConfirmCadPaciente').show()"/>
+
+
+                    </p:fieldset>
+                    <p:messages/> 
+
+<!--                    <p:dialog id="dialConfirmCadPaciente" visible="false" resizable="false"
+                              modal="true" widgetVar="wiDdialConfirmCadPaciente" header="atenção!">
+
+                        <h:outputText value="Deseja realmente cadastrar o paciente?"/><br/>
+                        <p:commandButton value="sim" action="#{pacienteController.registrarPaciente()}"
+                                         update="CadPaciente" oncomplete="PF('wiDdialConfirmCadPaciente').hide();" />
+                        <p:commandButton value="não" oncomplete="PF('wiDdialConfirmCadPaciente').hide()"/>
+
+                    </p:dialog>-->
+                </h:form>
+            </ui:define>
+        </ui:composition>
 
     </h:body>
 </html>

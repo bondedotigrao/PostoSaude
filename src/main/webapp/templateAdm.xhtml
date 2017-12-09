@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+        <p:layout fullPage="true">
+
+            <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+
+            </p:layoutUnit>
+
+
+
+            <p:layoutUnit position="west" size="240"  collapsible="true">
+                
+                        <p:menu>
+                         <p:submenu label="Menu" icon="fa fa-home" >
+                                
+                            </p:submenu>
+                        </p:menu>
+                        <p:menu toggleable="true">
+                           
+
+                            <p:submenu label="Posto">
+                                <p:menuitem value="Cadastrar" url="cadastrarPosto.xhtml" icon="ui-icon-disk" />
+                                <p:menuitem value="Atualizar" url="alterarPosto.xhtml" icon="fa fa-refresh"/>
+                                <p:menuitem value="Delete" url="deletarPosto.xhtml" icon="fa fa-user-times"/>
+                                <p:menuitem value="Apresentar Todos" url="apresentarPosto.xhtml" icon="fa fa-users" />
+                            </p:submenu>
+                           <p:submenu label="Funcionário">
+                                <p:menuitem value="Cadastrar" url="" icon="ui-icon-disk" />
+                                <p:menuitem value="Atualizar" url="" icon="fa fa-refresh"/>
+                                <p:menuitem value="Delete" url="" icon="fa fa-user-times"/>
+                                <p:menuitem value="Apresentar Todos" url="" icon="fa fa-users" />
+                            </p:submenu>
+                            <p:submenu label="Paciente">
+                                <p:menuitem value="Apresentar Todos" url="apresentaPaciente.xhtml" icon="fa fa-users" />
+                            </p:submenu>
+                             <p:submenu label="Agendamento">
+                                <p:menuitem value="Listar Agendamentos" url="" icon="fa fa-users" />
+                            </p:submenu>
+                             <p:submenu label="Alterar Dados ADM">
+                                <p:menuitem value="Atualizar Senha" url="" icon="fa fa-unlock-alt" />
+                                <p:menuitem value="Atualizar Cadastro" url="" icon="fa fa-refresh" />
+                                <p:menuitem value="Listar Todos" url="" icon="fa fa-users" />
+                            </p:submenu>
+
+                        </p:menu>
+
+
+                   
+
+            </p:layoutUnit >
+
+            <p:layoutUnit position="center" >  
+                <ui:insert name="co"/>
+            </p:layoutUnit>  
+
+        </p:layout>
+
+
+    </h:body>
+</html>
+

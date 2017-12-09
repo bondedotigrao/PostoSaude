@@ -37,7 +37,11 @@ public class Posto {
     }
 
    
+   @Deprecated
     public Posto() {
+        
+        this.endereco = new Endereco();
+        
         
     }
 

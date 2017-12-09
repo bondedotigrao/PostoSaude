@@ -25,11 +25,11 @@ public class PacienteController {
     FacesContext.getCurrentInstance().addMessage
         (null, new FacesMessage
         ("Paciente Cadastrado com sucesso!"));
-        
+       
         return "index.xhtml";
     }
     public String voltar() {
-   return "menuPaciente.xhtml";
+   return "menuAdm.xhtml";
 }
     
    

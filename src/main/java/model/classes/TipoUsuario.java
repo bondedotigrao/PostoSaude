@@ -14,8 +14,6 @@ public class TipoUsuario {
     private String senha;
     @Column
     private String login;
-    @Column
-    private int tipoUsuario;
 
     public TipoUsuario() {
         
@@ -45,18 +43,12 @@ public class TipoUsuario {
         this.login = login;
     }
 
-    public int getTipoUsuario() {
-        return tipoUsuario;
-    }
+    
 
-    public void setTipoUsuario(int tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
-    }
-
-    public TipoUsuario(int id, String senha, String login, int tipoUsuario) {
+    public TipoUsuario(int id, String senha, String login) {
         this.id = id;
         this.senha = senha;
         this.login = login;
-        this.tipoUsuario = tipoUsuario;
+       
     }
 }

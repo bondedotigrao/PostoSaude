@@ -1,8 +1,10 @@
 package controller;
 
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import model.PostoModel;
 import model.classes.Posto;
 
@@ -10,26 +12,64 @@ import model.classes.Posto;
 @SessionScoped
 public class PostoController {
 
-    PostoModel po = new PostoModel();
-
-    public void registrarPosto(Posto posto) {
-        po.cadastrarPosto(posto);
+  
+    
+    private PostoModel instance ;
+    private Posto cadPosto;
+    private Posto selectdPosto;
+    
+    public PostoController() {
+       this.instance = new PostoModel();   
+       this.cadPosto = new Posto();
+    }
+    public String registrarPosto() {
+       this.instance.cadastrarPosto(this.cadPosto);
+    FacesContext.getCurrentInstance().addMessage
+        (null, new FacesMessage
+        ("Posto Cadastrado com sucesso!"));
+       
+        return "index.xhtml";
     }
 
-    public void removerPaciente(Posto posto) {
-        po.removerPosto(posto);
+    public PostoModel getInstance() {
+        return instance;
     }
 
-    public void alterarPosto(Posto posto) {
-        po.alterarPosto(posto);
+    public void setInstance(PostoModel instance) {
+        this.instance = instance;
+    }
+
+    public Posto getCadPosto() {
+        return cadPosto;
+    }
+
+    public void setCadPosto(Posto cadPosto) {
+        this.cadPosto = cadPosto;
+    }
+
+    public Posto getSelectdPosto() {
+        return selectdPosto;
+    }
+
+    public void setSelectdPosto(Posto selectdPosto) {
+        this.selectdPosto = selectdPosto;
+    }
+    
+
+    public void removerPosto() {
+        this.instance.removerPosto(selectdPosto);
+    }
+
+    public void alterarPosto() {
+        this.instance.alterarPosto(selectdPosto);
     }
 
     public Posto recuperarID(Integer codigo) {
-        return po.recuperar(codigo);
+        return this.instance.recuperar(codigo);
     }
 
     public List<Posto> recuperarTodos() {
-        return po.RecuperarTodos();
+        return this.instance.RecuperarTodos();
     }
 
 }
