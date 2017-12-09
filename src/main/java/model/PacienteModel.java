@@ -38,7 +38,7 @@ public class PacienteModel {
     }
 
     public List<Paciente> listarTodos() {
-        return ((PacienteDao) dao).listarTodos();
+        return ((PacienteDao)dao).listarTodos();
     }
 
     public Paciente recuperarCpf(String cpf) {

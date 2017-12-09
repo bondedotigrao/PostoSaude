@@ -22,12 +22,15 @@ public class PacienteController {
     }
     public String registrarPaciente() {
        this.instance.inserir(this.cadPaciente);
-        FacesContext.getCurrentInstance().addMessage
+    FacesContext.getCurrentInstance().addMessage
         (null, new FacesMessage
         ("Paciente Cadastrado com sucesso!"));
         
         return "index.xhtml";
     }
+    public String voltar() {
+   return "menuPaciente.xhtml";
+}
     
    
     
