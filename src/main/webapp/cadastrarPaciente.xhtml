@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Cadastro do Paciente</title>
     </h:head>
@@ -11,12 +12,12 @@
         <ui:composition template="templateLogin.xhtml">
             <ui:define name="co" >
                 <h:form id="CadPaciente">
-                   <p:growl life="4000" showDetail="true" 
+                    <p:growl life="4000" showDetail="true" 
                              showSummary="true" sticky="true"/>
                     <p:fieldset id="fieldCad" legend="Cadastro de Paciente">
 
                         <p:panelGrid columns="3">
-                               
+
 
                             <h:outputText value="Nome*:"/>
                             <p:inputText id="txtNome" value="#{pacienteController.cadPaciente.nome}" required="true"
@@ -48,10 +49,14 @@
 
 
 
-                            <h:outputText value="Sexo*:"/>
-                            <p:inputText id="txtSexo" value="#{pacienteController.cadPaciente.sexo}" required="true"
-                                         requiredMessage="Campo Obrigatório!"/>
-                            <p:message for='txtSexo' />
+                            <h:outputLabel value="Sexo: *" for="sexo"/>
+                            <p:selectOneMenu id="txtSexo" value="#{pacienteController.cadPaciente.sexo}" required="true" 
+                                             requiredMessage="Favor informar o sexo">
+                                <f:selectItem itemValue="Masculino" itemLabel="Masculino"/>
+                                <f:selectItem itemValue="Feminino" itemLabel="Feminino"/>
+                                <f:selectItem itemLabel="Outro"/>
+                            </p:selectOneMenu>
+                            <p:message for="txtSexo"/>
 
 
                             <h:outputText value="Telefone*:"/>
@@ -64,12 +69,6 @@
 
 
                     </p:fieldset>
-
-
-
-
-
-
 
                     <p:fieldset id="fieldCadEnd" legend="Endereço">
 
@@ -107,21 +106,22 @@
                             <p:message for='txtCompl' />
                         </p:panelGrid>
 
-                        <p:commandButton value="cadastrar" action="#{pacienteController.registrarPaciente()}" oncomplete="PF('wiDdialConfirmCadPaciente').show()"/>
+                        <p:commandButton value="Cadastrar" oncomplete="PF('widDialConfirmCadPaciente').show()"/>
 
 
                     </p:fieldset>
-                    <p:messages/> 
 
-<!--                    <p:dialog id="dialConfirmCadPaciente" visible="false" resizable="false"
-                              modal="true" widgetVar="wiDdialConfirmCadPaciente" header="atenção!">
+                    <p:messages/>
+
+                    <p:dialog id="dialConfirmCadPaciente" visible="false" resizable="false"
+                              widgetVar="widDialConfirmCadPaciente" header="Atenção!">
 
                         <h:outputText value="Deseja realmente cadastrar o paciente?"/><br/>
                         <p:commandButton value="sim" action="#{pacienteController.registrarPaciente()}"
-                                         update="CadPaciente" oncomplete="PF('wiDdialConfirmCadPaciente').hide();" />
-                        <p:commandButton value="não" oncomplete="PF('wiDdialConfirmCadPaciente').hide()"/>
+                                         update=":CadPaciente" oncomplete="PF('widDialConfirmCadPaciente').hide();" />
+                        <p:commandButton value="não" oncomplete="PF('widDialConfirmCadPaciente').hide()"/>
 
-                    </p:dialog>-->
+                    </p:dialog>
                 </h:form>
             </ui:define>
         </ui:composition>

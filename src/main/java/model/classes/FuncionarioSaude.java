@@ -1,6 +1,5 @@
 package model.classes;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +10,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "funcionariosaude")
-
 public class FuncionarioSaude {
 //Funcionário
 
@@ -23,22 +21,35 @@ public class FuncionarioSaude {
     private String nome;
     @Column(length = 14, unique = true, nullable = false)
     private String cpf;
+    @Column
+    private String sexo;
     @Column(length = 50)
     private String especialidade;
     @ManyToOne
     @JoinColumn(name = "posto_id")
     private Posto posto;
 
+    @Deprecated
     public FuncionarioSaude() {
+        this.posto = new Posto();
 
     }
 
-    public FuncionarioSaude(String nome, String cpf, String especialidade, Posto posto) {
+    public FuncionarioSaude(String nome, String cpf, String especialidade, Posto posto,String sexo) {
         this.nome = nome;
         this.cpf = cpf;
         this.especialidade = especialidade;
         this.posto = posto;
+        this.sexo=sexo;
         // this.codigo = codigo;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     public Posto getPosto() {

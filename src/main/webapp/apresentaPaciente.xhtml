@@ -10,7 +10,7 @@
     </h:head>
     <h:body>
         <ui:composition template="templateAdm.xhtml">
-            <ui:define name="Conteudo" >
+            <ui:define name="co" >
 
                 <h:form id="formApresentaPaciente">
                     <p:dataTable id="tablePaciente" var="item" value="#{pacienteController.recuperarTodos()}"
@@ -47,7 +47,7 @@
                     <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaPaciente').show()"
                                      />
 
-                    <p:dialog id="dialVisualizaPaciente" visible="false" modal="true" header="Paciente Cadastrado"
+                    <p:dialog id="dialVisualizaPaciente" visible="false"  header="Paciente Cadastrado"
                               resizable="false" widgetVar="widDialVisualizaPaciente">
                         <p:panelGrid columns="2">
                             <h:outputText value="Código:"/>

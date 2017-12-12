@@ -21,14 +21,15 @@ public class PostoController {
     public PostoController() {
        this.instance = new PostoModel();   
        this.cadPosto = new Posto();
+       this.selectdPosto = new Posto();
     }
     public String registrarPosto() {
        this.instance.cadastrarPosto(this.cadPosto);
-    FacesContext.getCurrentInstance().addMessage
+        FacesContext.getCurrentInstance().addMessage
         (null, new FacesMessage
         ("Posto Cadastrado com sucesso!"));
        
-        return "index.xhtml";
+        return "menuAdm.xhtml";
     }
 
     public PostoModel getInstance() {
@@ -60,8 +61,9 @@ public class PostoController {
         this.instance.removerPosto(selectdPosto);
     }
 
-    public void alterarPosto() {
+    public String alterarPosto() {
         this.instance.alterarPosto(selectdPosto);
+        return "menuAdm.xhtml";
     }
 
     public Posto recuperarID(Integer codigo) {

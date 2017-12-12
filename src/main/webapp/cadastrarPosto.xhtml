@@ -72,11 +72,24 @@
                     <p:message for='txtCompl' />
                 </p:panelGrid>
 
-                <p:commandButton value="cadastrar" action="#{postoController.registrarPosto()}"
-                                 update="CadPosto" />
+                <p:commandButton value="Cadastrar" oncomplete="PF('widDialConfirmCadPosto').show()"/>
 
 
-            </p:fieldset>
+                    </p:fieldset>
+
+                    <p:messages/>
+
+                    <p:dialog id="dialConfirmCadPosto" visible="false" resizable="false"
+                              widgetVar="widDialConfirmCadPosto" header="Atenção!">
+
+                        <h:outputText value="Deseja realmente cadastrar o posto?"/><br/>
+                        <p:commandButton value="sim" action="#{postoController.registrarPosto()}"
+                                         update=":CadPosto" oncomplete="PF('widDialConfirmCadPosto').hide();" />
+                        <p:commandButton value="não" oncomplete="PF('widDialConfirmCadPosto').hide()"/>
+
+                    </p:dialog>
+
+
             <p:messages/> 
 
 

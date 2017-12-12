@@ -22,6 +22,7 @@ public class PacienteController {
     }
     public String registrarPaciente() {
        this.instance.inserir(this.cadPaciente);
+       this.cadPaciente = new Paciente();
     FacesContext.getCurrentInstance().addMessage
         (null, new FacesMessage
         ("Paciente Cadastrado com sucesso!"));

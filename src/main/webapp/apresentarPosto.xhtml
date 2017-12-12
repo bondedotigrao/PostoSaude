@@ -26,8 +26,9 @@
                     </p:dataTable>
                     <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaPosto').show()"/>
 
-                    <p:dialog id="dialVisualizarPosto" visible="false" modal="true" header="Posto Cadastrado" resizable="false"
+                    <p:dialog id="dialVisualizarPosto" visible="false" closable="true"  header="Posto Cadastrado" resizable="false"
                               widgetVar="widDialVisualizaPosto">
+                        
                         <p:panelGrid columns="2">
                             <h:outputText value="Código:"/>
                             <h:outputText value="#{postoController.selectdPosto.codigo}"/>

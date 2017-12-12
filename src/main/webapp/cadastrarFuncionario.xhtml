@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="CadFunc">
+            <p:growl life="4000" showDetail="true" 
+                     showSummary="true" sticky="true"/>
+            <p:fieldset id="fieldCad" legend="Cadastro do Funcionário">
+
+                <p:panelGrid columns="3">
+
+
+                    <h:outputText value="Nome*:"/>
+                    <p:inputText id="txtNome" value="#{funcionarioController.cadFunc.nome}" required="true"
+                                 requiredMessage="Campo Obrigatório!"/>
+                    <p:message for='txtNome' />
+
+                    <h:outputText value="CPF*:"/>
+                    <p:inputMask id="txtCPF" value="#{funcionarioController.cadFunc.cpf}" mask="999.999.999-99" required="true"
+                                 requiredMessage="tá faltando o CPF"/>
+                    <p:message for='txtCPF' />
+
+                    <h:outputText value="Especialidade*:"/>
+                    <p:inputText id="txtEsp" value="#{funcionarioController.cadFunc.especialidade}"  required="true"
+                                 requiredMessage="Campo Obrigatório!"/>
+                    <p:message for='txtEsp' />
+
+                    <h:outputLabel value="Sexo: *" for="sexo"/>
+                    <p:selectOneMenu id="txtSexo" value="#{funcionarioController.cadFunc.sexo}" required="true" 
+                                     requiredMessage="Favor informar o sexo">
+                        <f:selectItem itemValue="Masculino" itemLabel="Masculino"/>
+                        <f:selectItem itemValue="Feminino" itemLabel="Feminino"/>
+                        <f:selectItem itemLabel="Outro"/>
+                    </p:selectOneMenu>
+                    <p:message for="txtSexo"/>
+
+                </p:panelGrid>
+                
+                <h:outputText value="#{funcionarioController.cadFunc.posto.nome}"/><br/>
+                
+                <p:dataTable id="tabelaPosto" var="posto" value="#{postoController.recuperarTodos()}"
+                            rowKey="#{posto.codigo}" rows="5" paginator="true" selectionMode="single">
+                    <p:column headerText="X">
+                        <p:commandButton value="..."   >
+                            <f:setPropertyActionListener value="#{posto}" target="#{funcionarioController.cadFunc.posto}"/>
+                        </p:commandButton>
+                    </p:column>
+                    <p:column headerText="Código">
+                        #{posto.codigo}
+                    </p:column>
+                    <p:column headerText="Nome">
+                        #{posto.nome}
+                    </p:column>
+                    
+                </p:dataTable>
+                
+
+                <p:commandButton value="cadastrar" action="#{funcionarioController.registrarFuncionarioSaude()}"
+                                 update="CadFunc" />
+
+
+            </p:fieldset>
+        </h:form>
+
+
+    </h:body>
+</html>
+

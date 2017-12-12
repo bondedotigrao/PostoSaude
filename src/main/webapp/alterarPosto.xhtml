@@ -3,58 +3,86 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Alterar o Posto</title>
     </h:head>
     <h:body>
         <ui:composition template="templateAdm.xhtml">
             <ui:define name="co" >
-                <h:form id="formDialAltera">
-                    <p:panelGrid columns="3">
-                        <h:outputText value="Nome*:"/>
-                        <p:inputText id="txtnome" value="#{postoController.selectdPosto.nome}" required="true"
-                                     requiredMessage="Seu fresco! tá faltando o CPF"/>
-                        <p:message for='txtnome' />
 
-                        <h:outputText  value="Cidade*:"/>
-                        <p:inputText id="txtcidade" value="#{postoController.selectdPosto.endereco.cidade}" required="true"
-                                     requiredMessage="Está faltando a cidade"/>
-                        <p:message for="txtcidade"/>
+                <h:form id="formApresentaPosto">
+                    <p:dataTable id="tablePosto" var="item" value="#{postoController.recuperarTodos()}" 
+                                 paginator="true" rows="5" rowKey="#{item.codigo}" 
+                                 selectionMode="single" selection="#{postoController.selectdPosto}">
 
-                        <h:outputText value="Bairro*:"/>
-                        <p:inputText id='txtBairr' required="true"
-                                     value="#{postoController.selectdPosto.endereco.cep}" requiredMessage="Está faltando o Bairro"/>
-                        <p:message for="txtBairr"/>
+                        <f:facet name="header">
+                            Postos Cadastrados
+                        </f:facet>
 
-                        <h:outputText value="CEP*:"/>
-                        <p:inputText id='txtCep' required="true"
-                                     value="#{postoController.selectdPosto.endereco.cep}" requiredMessage="Tá faltando o CEP"/>
-                        <p:message for="txtCep"/>
+                        <p:column headerText="Código">#{item.codigo}</p:column>
+                        <p:column headerText="Nome">#{item.nome}</p:column>
+                        <p:column headerText="Cidade">#{item.endereco.cidade}</p:column>
+                    </p:dataTable>
 
-                        <h:outputText value="Rua*:"/>
-                        <p:inputText id='txtrua' required="true"
-                                     value="#{postoController.selectdPosto.endereco.rua}" requiredMessage="Está faltando a rua"/>
-                        <p:message for="txtrua"/>
-
-
-                        <h:outputText value="Número*:"/>
-                        <p:inputText id='txtNum' required="true"
-                                     value="#{postoController.selectdPosto.endereco.numero}" requiredMessage="Está faltando o número"/>
-                        <p:message for="txtNum"/>
-
-
-                        <h:outputText value="Complemento*:"/>
-                        <p:inputText id='txtC' 
-                                     value="#{postoController.selectdPosto.endereco.complemento}" />
-                        <p:message for="txtC"/>
-
-                    </p:panelGrid>
-                    <p:commandButton value="Alterar" action="#{postoController.alterarPosto()}"
-                                     update=":formDialAltera" oncomplete="PF('widDialAlterarPosto').hide()">
-                    </p:commandButton>
+                    <p:commandButton value="Alterar" oncomplete="PF('widDialConfirmCadPosto').show();" update=":formDialAltera"/>
 
                 </h:form>
+                <p:dialog id="dialConfirmCadPosto" visible="false" resizable="false"
+                          widgetVar="widDialConfirmCadPosto" header="Atenção!">
+
+
+                    <h:form id="formDialAltera">
+                        <p:panelGrid columns="3">
+                            <h:outputText value="Nome*:"/>
+                            <p:inputText id="txtnome" value="#{postoController.selectdPosto.nome}" required="true"
+                                         requiredMessage=""/>
+                            <p:message for='txtnome' />
+
+                            <h:outputText  value="Cidade*:"/>
+                            <p:inputText id="txtcidade" value="#{postoController.selectdPosto.endereco.cidade}" required="true"
+                                         requiredMessage="Está faltando a cidade"/>
+                            <p:message for="txtcidade"/>
+
+                            <h:outputText value="Bairro*:"/>
+                            <p:inputText id='txtBairr' required="true"
+                                         value="#{postoController.selectdPosto.endereco.cep}" requiredMessage="Está faltando o Bairro"/>
+                            <p:message for="txtBairr"/>
+
+                            <h:outputText value="CEP*:"/>
+                            <p:inputText id='txtCep' required="true"
+                                         value="#{postoController.selectdPosto.endereco.cep}" requiredMessage="Tá faltando o CEP"/>
+                            <p:message for="txtCep"/>
+
+                            <h:outputText value="Rua*:"/>
+                            <p:inputText id='txtrua' required="true"
+                                         value="#{postoController.selectdPosto.endereco.rua}" requiredMessage="Está faltando a rua"/>
+                            <p:message for="txtrua"/>
+
+
+                            <h:outputText value="Número*:"/>
+                            <p:inputText id='txtNum' required="true"
+                                         value="#{postoController.selectdPosto.endereco.numero}" requiredMessage="Está faltando o número"/>
+                            <p:message for="txtNum"/>
+
+
+                            <h:outputText value="Complemento*:"/>
+                            <p:inputText id='txtC' 
+                                         value="#{postoController.selectdPosto.endereco.complemento}" />
+                            <p:message for="txtC"/>
+
+                        </p:panelGrid>
+                        <p:commandButton value="sim" action="#{postoController.alterarPosto()}"
+                                         update="@form" oncomplete="PF('widDialConfirmCadPosto').hide();" />
+                        <p:commandButton value="não" oncomplete="PF('widDialConfirmCadPosto').hide()"/>
+
+                    </h:form>
+
+
+                </p:dialog>
+
+
             </ui:define>
         </ui:composition>
     </h:body>

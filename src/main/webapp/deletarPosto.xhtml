@@ -24,8 +24,21 @@
                         <p:column headerText="Nome">#{item.nome}</p:column>
                         <p:column headerText="Cidade">#{item.endereco.cidade}</p:column>
                     </p:dataTable>
-                    <p:commandButton value="Deletar" update="tablePosto"  action="#{postoController.removerPosto()}" />
+                    
+                    <p:commandButton value="Deletar" oncomplete="PF('widDialConfirmCadPosto').show()"/>
 
+
+
+
+                    <p:dialog id="dialConfirmCadPosto" visible="false" resizable="false"
+                              widgetVar="widDialConfirmCadPosto" header="Atenção!">
+
+                        <h:outputText value="Deseja realmente cadastrar o posto?"/><br/>
+                        <p:commandButton value="sim" action="#{postoController.removerPosto()}"
+                                         update=":formApresentaPosto" oncomplete="PF('widDialConfirmCadPosto').hide();" />
+                        <p:commandButton value="não" oncomplete="PF('widDialConfirmCadPosto').hide()"/>
+
+                    </p:dialog>
                 </h:form>
             </ui:define>
         </ui:composition>

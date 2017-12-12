@@ -99,10 +99,11 @@ public class PostoHibernate implements PostoDao {
         Session session = this.sessions.openSession();
 
         try {
-
-            return (List) session.getSession().createQuery("from Posto").getResultList();
+            List postos = (List) session.getSession().createQuery("from Posto").getResultList();
+            return postos;
 
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return null;
 
         } finally {
