@@ -36,6 +36,7 @@ public class Paciente {
     private String telefone;
     @OneToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
+    private String senha;
     
     @Deprecated
     public Paciente() {
@@ -44,14 +45,14 @@ public class Paciente {
     }
 
     public Paciente(String nome, String nomeMae, String cartaoSus, String cpf,
-            String sexo, String dataNasc, String telefone, Endereco endereco) {
+            String sexo, String dataNasc, String telefone, Endereco endereco,String senha) {
 
         this.nome = nome;
         this.nomeMae = nomeMae;
         this.cartaoSus = cartaoSus;
         this.cpf = cpf;
         this.sexo = sexo;
-       
+       this.senha=senha;
         this.dataNasc = dataNasc;
         this.telefone = telefone;
         this.endereco = endereco;
@@ -99,6 +100,14 @@ public class Paciente {
 
     public String getCpf() {
         return cpf;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public void setCpf(String cpf) {

@@ -27,7 +27,7 @@ public class PacienteController {
         (null, new FacesMessage
         ("Paciente Cadastrado com sucesso!"));
        
-        return "index.xhtml";
+        return "menuLogin.xhtml";
     }
     public String voltar() {
    return "menuAdm.xhtml";

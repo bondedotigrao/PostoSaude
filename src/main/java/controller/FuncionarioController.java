@@ -20,7 +20,7 @@ public class FuncionarioController {
    
   
     public String registrarFuncionarioSaude() {
-        this.instance.cadastrarFuncSaude(selectdFunc);
+        this.instance.cadastrarFuncSaude(this.cadFunc);
            this.cadFunc = new FuncionarioSaude();
 
         return "menuAdm.xhtml";
@@ -51,12 +51,13 @@ public class FuncionarioController {
     }
 
     
-    public void removerFuncionarioSaude(FuncionarioSaude func) {
-        instance.removerFuncSaude(func);
+    public void removerFuncionarioSaude() {
+        instance.removerFuncSaude(selectdFunc);
+        
     }
 
-    public void alterarFuncionarioSaude(FuncionarioSaude func) {
-        instance.alterarFuncSaude(func);
+    public void alterarFuncionarioSaude() {
+        instance.alterarFuncSaude(selectdFunc);
     }
 
     public FuncionarioSaude recuperarID(Integer codigo) {

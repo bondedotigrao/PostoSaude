@@ -46,8 +46,11 @@
                             <p:inputMask id="txtdate" value="#{pacienteController.cadPaciente.dataNasc}" mask="99/99/9999" required="true"
                                          requiredMessage="Campo Obrigatório!"/>
                             <p:message for='txtdate' />
-
-
+                        
+                               <h:outputText value="Senha*: " />
+                             <p:password id="txtSenha" value="#{pacienteController.cadPaciente.senha}" required="true"
+					 requiredMessage="A senha precisa ser preenchido!" /><br/>
+                            
 
                             <h:outputLabel value="Sexo: *" for="sexo"/>
                             <p:selectOneMenu id="txtSexo" value="#{pacienteController.cadPaciente.sexo}" required="true" 
@@ -63,6 +66,10 @@
                             <p:inputMask id="txtPhone" value="#{pacienteController.cadPaciente.telefone}" mask="(99) 9.9999-9999" required="true"
                                          requiredMessage="Campo Obrigatório!"/>
                             <p:message for='txtPhone' />
+                            
+                            
+                          
+                            
 
                         </p:panelGrid>
 
