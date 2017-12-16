@@ -23,17 +23,8 @@ public class PacienteController {
     public String registrarPaciente() {
        this.instance.inserir(this.cadPaciente);
        this.cadPaciente = new Paciente();
-    FacesContext.getCurrentInstance().addMessage
-        (null, new FacesMessage
-        ("Paciente Cadastrado com sucesso!"));
-       
         return "menuLogin.xhtml";
-    }
-    public String voltar() {
-   return "menuAdm.xhtml";
-}
-    
-   
+    } 
     
     public void removerPaciente(Paciente paciente){
         this.instance.deletar(paciente);

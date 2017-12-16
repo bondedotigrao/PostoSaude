@@ -12,7 +12,9 @@
             <ui:define name="co" >
         
          <p:dialog visible="true">
+             
              <h:form id="formLogar">
+                 
               <p:outputLabel value="CPF*:" />
               <p:inputMask id="txtCpf" binding="#{Login}" mask="999.999.999-99" required="true"
                            maxlength="12" requiredMessage="O CPF precisa ser preenchido!" />
@@ -23,7 +25,7 @@
 				<p:password id="txtSenha" binding="#{senhaLogin}" required="true"
 					maxlength="12" requiredMessage="A senha precisa ser preenchido!" />
                                 <br/>
-                         <p:commandButton value="logar" action="#{loginController.realizarLoginPaciente(Login, senhaLogin)}" />
+<!--                         <p:commandButton value="logar" action="#{loginController.realizarLoginPaciente(Login, senhaLogin)}" />-->
                
                
                <p:commandButton value="logar" action="#{loginController.realizarLoginPaciente(Login.value, senhaLogin.value)}" />
