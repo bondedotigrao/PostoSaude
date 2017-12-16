@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 @Entity
 @Table(name="agendamentos")
@@ -17,6 +18,7 @@ public class AgendamentoConsultas {
     @GeneratedValue
     private int codigo;
     @Column
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date data;
     @OneToOne
     private FuncionarioSaude func;
@@ -27,12 +29,13 @@ public class AgendamentoConsultas {
     private Posto posto;
     
 
-    public AgendamentoConsultas(Date data, FuncionarioSaude func, Paciente paciente) {
+    public AgendamentoConsultas(Date data, FuncionarioSaude func, Paciente paciente,Posto posto) {
         this.data = data;
         this.func = func;
         this.paciente = paciente;
+        this.posto = posto;
     }
-
+    
     public AgendamentoConsultas() {
     }
 

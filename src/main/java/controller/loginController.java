@@ -1,10 +1,7 @@
 package controller;
-
 import java.util.List;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import model.classes.Paciente;
 
 
@@ -13,6 +10,12 @@ import model.classes.Paciente;
 public class loginController {
     
     private Paciente pacienteLogado = null;
+
+    public loginController() {
+        pacienteLogado = new Paciente();
+    }
+    
+    
 
         public Paciente getPacienteLogado() {
             return pacienteLogado;
@@ -35,16 +38,13 @@ public class loginController {
                     this.pacienteLogado = p;
                 }
                 break;
-            }
+            
+        }
         }
         
         
         if(pacienteLogado==null){
-           FacesContext.getCurrentInstance().addMessage
-        (null, new FacesMessage
-        ("Não existe esse login!"));
-            
-            return null;
+          return null;
         }else{
             return "menuPaciente.xhtml";
         }

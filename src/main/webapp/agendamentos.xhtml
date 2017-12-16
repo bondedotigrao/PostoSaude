@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Agendamentos</title>
+    </h:head>
+    <h:body>
+
+        <c:if test="${loginController.pacienteLogado==null}">
+            <script>
+                location.href = "menuLogin.xhtml";
+            </script>
+        </c:if>
+
+        <ui:composition template="templatePaciente.xhtml"> 
+            <ui:define name="co" >
+
+                <h:form id="CadAgen">
+                    <p:growl life="4000" showDetail="true" 
+                             showSummary="true" sticky="true"/>
+
+
+                    <p:fieldset id="fieldCad" legend="Cadastro Agendamentos">
+
+                        <p:panelGrid columns="3">
+
+
+
+                            <h:outputText value="Data*:"/>
+                            <p:calendar id="txtdate" value="#{agendamentoController.cadAgen.data}" required="true"
+                                        requiredMessage="Está faltando a data"/>
+                            <p:message for='txtdate' />
+
+
+
+                        </p:panelGrid>
+
+                    </p:fieldset>
+                    <p:fieldset id="fieldCadas" legend="Posto">
+
+                        <p:dataTable id="tabelaPosto" var="posto" value="#{postoController.recuperarTodos()}"
+                                     rowKey="#{posto.codigo}" rows="5" paginator="true" selectionMode="single">
+                            <p:column headerText="Selecione">
+                                <p:commandButton value="..."   >
+                                    <f:setPropertyActionListener value="#{posto}" target="#{agendamentoController.cadAgen.posto}"/>
+                                </p:commandButton>
+                            </p:column>
+                            <p:column headerText="Código">
+                                #{posto.codigo}
+                            </p:column>
+                            <p:column headerText="Nome">
+                                #{posto.nome}
+                            </p:column>
+
+                        </p:dataTable>
+                    </p:fieldset>
+
+                    <p:fieldset id="fieldCadast" legend="Especialistas">
+
+                        <p:dataTable id="tabelaFunc" var="Func" value="#{funcionarioController.recuperarTodos()}"
+                                     rowKey="#{Func.codigo}" rows="5" paginator="true" selectionMode="single">
+                            <p:column headerText="Selecione">
+                                <p:commandButton value="..."   >
+                                    <f:setPropertyActionListener value="#{Func}" target="#{agendamentoController.cadAgen.func}"/>
+                                </p:commandButton>
+                            </p:column>
+                            <p:column headerText="Código">
+                                #{Func.codigo}
+                            </p:column>
+
+                            <p:column headerText="Nome">
+                                #{Func.nome}
+                            </p:column>
+
+                            <p:column headerText="Especialidade">
+                                #{Func.especialidade}
+                            </p:column>
+
+                        </p:dataTable>
+
+                    </p:fieldset>
+                    <p:commandButton value="cadastrar" action="#{agendamentoController.registrar()}"
+                                     update="CadAgen" />
+
+
+
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

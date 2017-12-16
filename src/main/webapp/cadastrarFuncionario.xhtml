@@ -11,68 +11,68 @@
     <h:body>
         
         <ui:composition template="templateAdm.xhtml">
-              <ui:define name="co" >
-        <h:form id="CadFunc">
-            <p:growl life="4000" showDetail="true" 
-                     showSummary="true" sticky="true"/>
-            <p:fieldset id="fieldCad" legend="Cadastro do Funcionário">
+            <ui:define name="co" >
+                <h:form id="CadFunc">
+                    <p:growl life="4000" showDetail="true" 
+                             showSummary="true" sticky="true"/>
+                    <p:fieldset id="fieldCad" legend="Cadastro do Funcionário">
 
-                <p:panelGrid columns="3">
+                        <p:panelGrid columns="3">
 
 
-                    <h:outputText value="Nome*:"/>
-                    <p:inputText id="txtNome" value="#{funcionarioController.cadFunc.nome}" required="true"
-                                 requiredMessage="Campo Obrigatório!"/>
-                    <p:message for='txtNome' />
+                            <h:outputText value="Nome*:"/>
+                            <p:inputText id="txtNome" value="#{funcionarioController.cadFunc.nome}" required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtNome' />
 
-                    <h:outputText value="CPF*:"/>
-                    <p:inputMask id="txtCPF" value="#{funcionarioController.cadFunc.cpf}" mask="999.999.999-99" required="true"
-                                 requiredMessage="tá faltando o CPF"/>
-                    <p:message for='txtCPF' />
+                            <h:outputText value="CPF*:"/>
+                            <p:inputMask id="txtCPF" value="#{funcionarioController.cadFunc.cpf}" mask="999.999.999-99" required="true"
+                                         requiredMessage="tá faltando o CPF"/>
+                            <p:message for='txtCPF' />
 
-                    <h:outputText value="Especialidade*:"/>
-                    <p:inputText id="txtEsp" value="#{funcionarioController.cadFunc.especialidade}"  required="true"
-                                 requiredMessage="Campo Obrigatório!"/>
-                    <p:message for='txtEsp' />
+                            <h:outputText value="Especialidade*:"/>
+                            <p:inputText id="txtEsp" value="#{funcionarioController.cadFunc.especialidade}"  required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtEsp' />
 
-                    <h:outputLabel value="Sexo: *" for="sexo"/>
-                    <p:selectOneMenu id="txtSexo" value="#{funcionarioController.cadFunc.sexo}" required="true" 
-                                     requiredMessage="Favor informar o sexo">
-                        <f:selectItem itemValue="Masculino" itemLabel="Masculino"/>
-                        <f:selectItem itemValue="Feminino" itemLabel="Feminino"/>
-                        <f:selectItem itemLabel="Outro"/>
-                    </p:selectOneMenu>
-                    <p:message for="txtSexo"/>
+                            <h:outputLabel value="Sexo: *" for="sexo"/>
+                            <p:selectOneMenu id="txtSexo" value="#{funcionarioController.cadFunc.sexo}" required="true" 
+                                             requiredMessage="Favor informar o sexo">
+                                <f:selectItem itemValue="Masculino" itemLabel="Masculino"/>
+                                <f:selectItem itemValue="Feminino" itemLabel="Feminino"/>
+                                <f:selectItem itemLabel="Outro"/>
+                            </p:selectOneMenu>
+                            <p:message for="txtSexo"/>
 
-                </p:panelGrid>
-                
-                <h:outputText value="#{funcionarioController.cadFunc.posto.nome}"/><br/>
-                
-                <p:dataTable id="tabelaPosto" var="posto" value="#{postoController.recuperarTodos()}"
-                            rowKey="#{posto.codigo}" rows="5" paginator="true" selectionMode="single">
-                    <p:column headerText="Selecione">
-                        <p:commandButton value="..."   >
-                            <f:setPropertyActionListener value="#{posto}" target="#{funcionarioController.cadFunc.posto}"/>
-                        </p:commandButton>
-                    </p:column>
-                    <p:column headerText="Código">
+                        </p:panelGrid>
+
+                        <h:outputText value="#{funcionarioController.cadFunc.posto.nome}"/><br/>
+
+                        <p:dataTable id="tabelaPosto" var="posto" value="#{postoController.recuperarTodos()}"
+                                     rowKey="#{posto.codigo}" rows="5" paginator="true" selectionMode="single">
+                            <p:column headerText="Selecione">
+                                <p:commandButton value="..."   >
+                                    <f:setPropertyActionListener value="#{posto}" target="#{funcionarioController.cadFunc.posto}"/>
+                                </p:commandButton>
+                            </p:column>
+                            <p:column headerText="Código">
                         #{posto.codigo}
-                    </p:column>
-                    <p:column headerText="Nome">
+                            </p:column>
+                            <p:column headerText="Nome">
                         #{posto.nome}
-                    </p:column>
-                    
-                </p:dataTable>
-                
+                            </p:column>
 
-                <p:commandButton value="cadastrar" action="#{funcionarioController.registrarFuncionarioSaude()}"
-                                 update="CadFunc" />
+                        </p:dataTable>
 
 
-            </p:fieldset>
-        </h:form>
-                  </ui:define>
-</ui:composition>
+                        <p:commandButton value="cadastrar" action="#{funcionarioController.registrarFuncionarioSaude()}"
+                                         update="CadFunc" />
+
+
+                    </p:fieldset>
+                </h:form>
+            </ui:define>
+        </ui:composition>
 
 
     </h:body>

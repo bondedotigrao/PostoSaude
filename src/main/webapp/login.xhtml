@@ -8,7 +8,7 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-         <ui:composition template="templateLogin.xhtml">
+        <ui:composition template="templateLogin.xhtml">
             <ui:define name="co" >
         
          <p:dialog visible="true">
@@ -24,7 +24,7 @@
 					maxlength="12" requiredMessage="A senha precisa ser preenchido!" />
                                 <br/>
                                 
-                                <p:commandButton value="logar" action="#{loginController.realizarLoginPaciente(login, senha)}" />
+                                <p:commandButton value="logar" action="#{loginController.realizarLoginPaciente(Login, senhaLogin)}" />
                 
                
             </h:form>
@@ -32,6 +32,8 @@
           
     </ui:define>
     </ui:composition>
+    
+
     </h:body>
 </html>
 
