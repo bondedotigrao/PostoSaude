@@ -23,11 +23,13 @@
 				<p:password id="txtSenha" binding="#{senhaLogin}" required="true"
 					maxlength="12" requiredMessage="A senha precisa ser preenchido!" />
                                 <br/>
-                                
-                                <p:commandButton value="logar" action="#{loginController.realizarLoginPaciente(Login, senhaLogin)}" />
-                
+                         <p:commandButton value="logar" action="#{loginController.realizarLoginPaciente(Login, senhaLogin)}" />
                
-            </h:form>
+               
+               <p:commandButton value="logar" action="#{loginController.realizarLoginPaciente(Login.value, senhaLogin.value)}" />
+            
+             
+             </h:form>
         </p:dialog>
           
     </ui:define>

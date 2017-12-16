@@ -29,7 +29,7 @@
                         <p:column headerText="CPF">#{item.cpf}</p:column>
                     </p:dataTable>
 
-                    <p:commandButton value="Alterar" oncomplete="PF('widDialConfirmCadFunc').show();" update=":formDialAltera"/>
+                    <p:commandButton value="Alterar" oncomplete="PF('widDialConfirmCadFunc').show();" update=":formDialAltera" icon="fa fa-pencil-square"/>
                 </h:form>
                 <p:dialog id="dialConfirmCadFunc" visible="false" resizable="false"
                           widgetVar="widDialConfirmCadFunc" header="Atenção!">

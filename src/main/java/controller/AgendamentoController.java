@@ -29,9 +29,8 @@ public class AgendamentoController {
   
     public String registrar() {
         
-        Paciente p = ((loginController)((HttpSession)FacesContext.getCurrentInstance().getExternalContext()
-                .getSession(true)).getAttribute("login")).getPacienteLogado();
-       
+       Paciente p = (Paciente) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pacienteLogado");
+
         
         this.CadAgen.setPaciente(p);
         

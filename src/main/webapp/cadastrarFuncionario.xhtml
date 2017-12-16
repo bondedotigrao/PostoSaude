@@ -45,13 +45,20 @@
                             <p:message for="txtSexo"/>
 
                         </p:panelGrid>
-
+                        
+                       
                         <h:outputText value="#{funcionarioController.cadFunc.posto.nome}"/><br/>
 
+                        
+                        
                         <p:dataTable id="tabelaPosto" var="posto" value="#{postoController.recuperarTodos()}"
-                                     rowKey="#{posto.codigo}" rows="5" paginator="true" selectionMode="single">
-                            <p:column headerText="Selecione">
-                                <p:commandButton value="..."   >
+                                     rowKey="#{posto.codigo}" rows="5" paginator="true" selectionMode="single" >
+                             <f:facet name="header">
+                            Postos Cadastrados
+                        </f:facet>
+                            
+                            <p:column headerText="Escolha">
+                                <p:commandButton icon="fa fa-plus"   >
                                     <f:setPropertyActionListener value="#{posto}" target="#{funcionarioController.cadFunc.posto}"/>
                                 </p:commandButton>
                             </p:column>

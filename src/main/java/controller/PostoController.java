@@ -4,12 +4,13 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import model.PostoModel;
 import model.classes.Posto;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class PostoController {
 
   
@@ -25,6 +26,7 @@ public class PostoController {
     }
     public String registrarPosto() {
        this.instance.cadastrarPosto(this.cadPosto);
+       this.cadPosto = new Posto();
         FacesContext.getCurrentInstance().addMessage
         (null, new FacesMessage
         ("Posto Cadastrado com sucesso!"));
