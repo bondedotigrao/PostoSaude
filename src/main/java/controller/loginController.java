@@ -50,7 +50,16 @@ public class loginController {
         }
     }
     
-    
+//    public String mostrarProfessor(String siape) {
+//		String ret = "";
+//
+//		if (siape != null) {
+//			this.setProfessorDetalhado(this..findBySiape(siape));
+//			ret = "/restrito/professor/ensino/mostrar.xhtml?faces-redirect=true";
+//		}
+//
+//		return ret;
+//	}
 }
     
 
