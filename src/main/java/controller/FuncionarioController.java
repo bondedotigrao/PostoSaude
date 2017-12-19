@@ -60,8 +60,8 @@ public class FuncionarioController {
         instance.alterarFuncSaude(selectdFunc);
     }
 
-    public FuncionarioSaude recuperarID(Integer codigo) {
-         return instance.recuperar(codigo);
+    public FuncionarioSaude recuperarID() {
+         return instance.recuperar(this.selectdFunc.getCodigo());
     }
 
     public List<FuncionarioSaude> recuperarTodos() {

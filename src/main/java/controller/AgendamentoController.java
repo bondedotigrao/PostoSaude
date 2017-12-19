@@ -39,20 +39,22 @@ public class AgendamentoController {
         return "menuPaciente.xhtml";
     }
     
-    
-
-    
-    public void removerAgendamento(AgendamentoConsultas agend) {
-       instance.removerAgendamento(agend);
+    public List<AgendamentoConsultas> buscarAgendamento(Paciente paciente){
+      return  this.instance.buscarAgendamento(paciente);
     }
     
-    public void alterarAgendamento(AgendamentoConsultas agend) {
-       instance.alterarAgendamento(agend);
+    public void removerAgendamento() {
+       instance.removerAgendamento(this.selectdAgend);
+    }
+    
+    public void alterarAgendamento() {
+       instance.alterarAgendamento(this.selectdAgend);
     }
     
     public AgendamentoConsultas recuperarID(Integer codigo) {
         return instance.recuperar(codigo);
     }
+   
     
     public List<AgendamentoConsultas> recuperarTodos() {
         return instance.RecuperarTodos();

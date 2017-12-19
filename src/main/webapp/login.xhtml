@@ -10,33 +10,31 @@
     <h:body>
         <ui:composition template="templateLogin.xhtml">
             <ui:define name="co" >
-        
-         <p:dialog visible="true">
-             
-             <h:form id="formLogar">
-                 
-              <p:outputLabel value="CPF*:" />
-              <p:inputMask id="txtCpf" binding="#{Login}" mask="999.999.999-99" required="true"
-                           maxlength="12" requiredMessage="O CPF precisa ser preenchido!" />
-              
 
-                <br/>
-                <p:outputLabel value="Senha*: " />
-				<p:password id="txtSenha" binding="#{senhaLogin}" required="true"
-					maxlength="12" requiredMessage="A senha precisa ser preenchido!" />
-                                <br/>
-<!--                         <p:commandButton value="logar" action="#{loginController.realizarLoginPaciente(Login, senhaLogin)}" />-->
-               
-               
-               <p:commandButton value="logar" action="#{loginController.realizarLoginPaciente(Login.value, senhaLogin.value)}" />
-            
-             
-             </h:form>
-        </p:dialog>
-          
-    </ui:define>
-    </ui:composition>
-    
+                <p:dialog visible="true">
+
+                    <h:form id="formLogar">
+
+                        <p:outputLabel value="CPF*:" />
+                        <p:inputMask id="txtCpf" binding="#{Login}" mask="999.999.999-99" required="true"
+                                     maxlength="12" requiredMessage="O CPF precisa ser preenchido!" />
+
+
+                        <br/>
+                        <p:outputLabel value="Senha*: " />
+                        <p:password id="txtSenha" binding="#{senhaLogin}" required="true"
+                                    maxlength="12" requiredMessage="A senha precisa ser preenchido!" />
+
+                        <br/>
+                        <p:commandButton value="logar" action="#{loginController.realizarLoginPaciente(Login.value, senhaLogin.value)}" />
+
+
+                    </h:form>
+                </p:dialog>
+
+            </ui:define>
+        </ui:composition>
+
 
     </h:body>
 </html>

@@ -1,10 +1,8 @@
 package controller;
 
 import java.util.List;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import model.classes.Paciente;
 import model.PacienteModel;
 
@@ -26,13 +24,15 @@ public class PacienteController {
         return "menuLogin.xhtml";
     } 
     
-    public void removerPaciente(Paciente paciente){
-        this.instance.deletar(paciente);
+    public void removerPaciente(){
+        this.instance.deletar(this.selectdPaciente);
     }
     
-    public void alterarPaciente(Paciente paciente){
-        instance.alterar(paciente);
+    public String alterarPaciente(){
+        instance.alterar(this.selectdPaciente);
+        return "menuPaciente.xhtml";
     }
+    
     
     public Paciente recuperarID(Integer codigo) {
         return instance.recupera(codigo);

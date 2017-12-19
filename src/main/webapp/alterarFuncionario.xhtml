@@ -9,9 +9,7 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        
-        
-        
+
         <ui:composition template="templateAdm.xhtml">
             <ui:define name="co" >
 
@@ -51,28 +49,33 @@
                             <p:inputText id='txtBairr' required="true"
                                          value="#{funcionarioController.selectdFunc.especialidade}" requiredMessage="Está faltando o Bairro"/>
                             <p:message for="txtBairr"/>
-
-                            <h:outputText value="Sexo*:"/>
-                            <p:inputText id='txtSexo' required="true"
-                                         value="#{funcionarioController.selectdFunc.sexo}" requiredMessage="Tá faltando o CEP"/>
+                            <h:outputLabel value="Sexo: *" for="sexo"/>
+                            <p:selectOneMenu id="txtSexo" value="#{funcionarioController.cadFunc.sexo}" required="true" 
+                                             requiredMessage="Favor informar o sexo">
+                                <f:selectItem itemValue="Masculino" itemLabel="Masculino"/>
+                                <f:selectItem itemValue="Feminino" itemLabel="Feminino"/>
+                                <f:selectItem itemLabel="Outro"/>
+                            </p:selectOneMenu>
                             <p:message for="txtSexo"/>
-               
+
 
                         </p:panelGrid>
-                        
+
                         <p:dataTable id="tabelaPosto" var="posto" value="#{postoController.recuperarTodos()}"
                                      rowKey="#{posto.codigo}" rows="5" paginator="true" selectionMode="single"
                                      selection="#{funcionarioController.selectdFunc.posto}">
-                    
-                    <p:column headerText="Código">
-                        #{posto.codigo}
-                    </p:column>
-                    <p:column headerText="Nome">
-                        #{posto.nome}
-                    </p:column>
-                    
-                </p:dataTable>
-                        
+                            <f:facet name="header">
+                                Postos Cadastrados
+                            </f:facet>
+                            <p:column headerText="Código">
+                                #{posto.codigo}
+                            </p:column>
+                            <p:column headerText="Nome">
+                                #{posto.nome}
+                            </p:column>
+
+                        </p:dataTable>
+
                         <p:commandButton value="sim" action="#{funcionarioController.alterarFuncionarioSaude()}"
                                          update=":formApresentaFunci" oncomplete="PF('widDialConfirmCadFunc').hide();" />
                         <p:commandButton value="não" oncomplete="PF('widDialConfirmCadFunc').hide()"/>
@@ -85,17 +88,9 @@
 
             </ui:define>
         </ui:composition>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
     </h:body>
 </html>
 

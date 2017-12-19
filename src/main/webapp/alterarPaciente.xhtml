@@ -1,26 +1,156 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        
-        <title>Facelet Title</title>
-        
+
+        <title>Altera Paciente</title>
+
     </h:head>
-    
+
     <h:body>
-       
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    </h:body
-    
+
+
+        <ui:composition template="templatePaciente.xhtml">
+            <ui:define name="co" >
+
+                <h:form id="formAlteraPaciente">
+                    <p:dataTable id="tablePaciente" var="item" value="#{loginController.pacienteLogado}" 
+                                 paginator="true" rows="5" rowKey="#{item.id_paciente}" 
+                                 selectionMode="single" selection="#{pacienteController.selectdPaciente=loginController.pacienteLogado}">
+
+                        <f:facet name="header">
+                            Paciente Cadastrado
+                        </f:facet>
+
+                        <p:column headerText="Código">#{item.id_paciente}</p:column>
+                        <p:column headerText="Nome">#{item.nome}</p:column>
+                        <p:column headerText="CPF">#{item.cpf}</p:column>
+                    </p:dataTable>
+
+                    <p:commandButton value="Alterar" 
+                                     oncomplete="PF('widDialConfirmCadPaciente').show();" update=":formAlteraPaciente" icon="fa fa-pencil-square"/>
+                </h:form>
+                <p:dialog id="dialConfirmCadPaciente" visible="false" resizable="false"
+                          widgetVar="widDialConfirmCadPaciente" header="Atenção!">
+
+
+                    <h:form id="formDialAltera">
+                        <p:panelGrid columns="3">
+
+
+                            <h:outputText value="Nome*:"/>
+                            <p:inputText id="txtNome" value="#{pacienteController.selectdPaciente.nome}" required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtNome' />
+
+
+                            <h:outputText value="CPF*:"/>
+                            <p:inputMask id="txtCPF" value="#{pacienteController.selectdPaciente.cpf}" mask="999.999.999-99" required="true"
+                                         requiredMessage="Está faltando o CPF"/>
+                            <p:message for='txtCPF' />
+
+
+                            <h:outputText value="Cartão do SUS*:"/>
+                            <p:inputText id="txtSUS" value="#{pacienteController.selectdPaciente.cartaoSus}" required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtSUS' /> 
+
+                            <h:outputText value="Nome da Mãe*:"/>
+                            <p:inputText id="txtNomeMae" value="#{pacienteController.selectdPaciente.nomeMae}" required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtNomeMae' />
+
+
+                            <h:outputText value="Data de Nascimento*:"/>
+                            <p:inputMask id="txtdate" value="#{pacienteController.selectdPaciente.dataNasc}" mask="99/99/9999" required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtdate' />
+
+                            <h:outputText value="Senha*: " />
+                            <p:password id="txtSenha" value="#{pacienteController.selectdPaciente.senha}" required="true"
+                                        requiredMessage="A senha precisa ser preenchido!" /><br/>
+
+
+                            <h:outputLabel value="Sexo: *" for="sexo"/>
+                            <p:selectOneMenu id="txtSexo" value="#{pacienteController.selectdPaciente.sexo}" required="true" 
+                                             requiredMessage="Favor informar o sexo">
+                                <f:selectItem itemValue="Masculino" itemLabel="Masculino"/>
+                                <f:selectItem itemValue="Feminino" itemLabel="Feminino"/>
+                                <f:selectItem itemLabel="Outro"/>
+                            </p:selectOneMenu>
+                            <p:message for="txtSexo"/>
+
+
+                            <h:outputText value="Telefone*:"/>
+                            <p:inputMask id="txtPhone" value="#{pacienteController.selectdPaciente.telefone}" mask="(99) 9.9999-9999" required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtPhone' />
+
+                       
+
+
+
+
+                      
+
+                            <h:outputText value="Cidade*:"/>
+                            <p:inputText id="txtCidade" value="#{pacienteController.selectdPaciente.endereco.cidade}" required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtCidade' />
+
+                            <h:outputText value="CEP:*"/>
+                            <p:inputMask id="txtCEP" value="#{pacienteController.selectdPaciente.endereco.cep}" mask="99999-999" required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtCEP' />
+
+                            <h:outputText value="Bairro*:"/>
+                            <p:inputText id="txtBairro" value="#{pacienteController.selectdPaciente.endereco.bairro}" required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtBairro' /> 
+
+                            <h:outputText value="Rua*:"/>
+                            <p:inputText id="txtRua" value="#{pacienteController.selectdPaciente.endereco.rua}" required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtRua' />
+
+                            <h:outputText value="Nº*:"/>
+                            <p:inputText id="txtN" value="#{pacienteController.selectdPaciente.endereco.numero}" required="true"
+                                         requiredMessage="Campo Obrigatório!"/>
+                            <p:message for='txtN' />
+
+
+
+                            <h:outputText value="Complemento:"/>
+                            <p:inputText id="txtCompl" value="#{pacienteController.selectdPaciente.endereco.complemento}" />
+                            <p:message for='txtCompl' />
+                        </p:panelGrid>
+
+
+
+                        <p:commandButton value="sim" action="#{pacienteController.alterarPaciente}"
+                                         update=":formAlteraPaciente" oncomplete="PF('widDialConfirmCadPaciente').hide();" />
+                        <p:commandButton value="não" oncomplete="PF('widDialConfirmCadPaciente').hide()"/>
+
+                    </h:form>
+
+
+                </p:dialog>
+
+
+            </ui:define>
+        </ui:composition>
+
+
+
+
+
+
+
+    </h:body>
+
 </html>
 

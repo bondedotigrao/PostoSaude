@@ -4,6 +4,7 @@ import java.util.List;
 import model.InterfaceDao.AgendamentoDao;
 import model.InterfaceDao.Dao;
 import model.classes.AgendamentoConsultas;
+import model.classes.Paciente;
 import model.hibernate.AgendamentoHibernate;
 
 public class AgendamentoModel {
@@ -50,5 +51,7 @@ public class AgendamentoModel {
     public List<AgendamentoConsultas> RecuperarTodos() {
         return ((AgendamentoDao) dao).listarTodos();
     }
-
+    public List<AgendamentoConsultas> buscarAgendamento(Paciente paciente){
+         return ((AgendamentoDao) dao).buscarAgendamento(paciente);
+    }
 }

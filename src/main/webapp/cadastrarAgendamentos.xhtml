@@ -46,7 +46,7 @@
                         <p:dataTable id="tabelaPosto" var="posto" value="#{postoController.recuperarTodos()}"
                                      rowKey="#{posto.codigo}" rows="5" paginator="true" selectionMode="single">
                             <p:column headerText="Selecione">
-                                <p:commandButton value="..."   >
+                                <p:commandButton icon="fa fa-plus" >
                                     <f:setPropertyActionListener value="#{posto}" target="#{agendamentoController.cadAgen.posto}"/>
                                 </p:commandButton>
                             </p:column>
@@ -65,7 +65,7 @@
                         <p:dataTable id="tabelaFunc" var="Func" value="#{funcionarioController.recuperarTodos()}"
                                      rowKey="#{Func.codigo}" rows="5" paginator="true" selectionMode="single">
                             <p:column headerText="Selecione">
-                                <p:commandButton value="..."   >
+                                <p:commandButton icon="fa fa-plus" >
                                     <f:setPropertyActionListener value="#{Func}" target="#{agendamentoController.cadAgen.func}"/>
                                 </p:commandButton>
                             </p:column>

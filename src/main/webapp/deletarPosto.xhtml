@@ -25,7 +25,8 @@
                         <p:column headerText="Cidade">#{item.endereco.cidade}</p:column>
                     </p:dataTable>
                     
-                    <p:commandButton value="Deletar" icon="fa fa-trash" oncomplete="PF('widDialConfirmCadPosto').show()"/>
+                    <p:commandButton value="Deletar" icon="fa fa-trash" oncomplete="PF('widDialConfirmCadPosto').show()"
+                                     update=":formApresentaPosto"/>
 
 
 

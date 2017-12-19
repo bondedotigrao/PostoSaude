@@ -4,6 +4,7 @@ package model.hibernate;
 import java.util.List;
 import model.InterfaceDao.AgendamentoDao;
 import model.classes.AgendamentoConsultas;
+import model.classes.Paciente;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -123,5 +124,20 @@ public class AgendamentoHibernate implements AgendamentoDao {
 
             session.close();
         }
+    }
+    public List<AgendamentoConsultas> buscarAgendamento(Paciente paciente){
+      Session session = this.sessions.openSession();
+
+        try {
+
+            return session.getSession().createQuery("from AgendamentoConsultas where paciente_id_paciente="+paciente.getId_paciente()).getResultList();
+            
+
+        } catch (Exception e) {
+            return null;
+        } finally {
+
+            session.close();
+        }  
     }
 }

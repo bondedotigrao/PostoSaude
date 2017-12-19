@@ -11,15 +11,16 @@
     </h:head>
     <h:body>
         <c:if test="${loginController.pacienteLogado == null}">
-            <script>location.href="menuLogin.xhtml";</script>
+            <script>location.href = "menuLogin.xhtml";</script>
         </c:if>
-         <ui:composition template="templatePaciente.xhtml"> 
+        <ui:composition template="templatePaciente.xhtml"> 
             <ui:define name="co" >
-                   
+
+                <p:growl id="gro" sticky="true" showDetail="true" showSummary="true"/>
                 
-      <h:form id="formApresentaPaciente">
-              <p:dataTable id="tablePaciente" var="item" value="#{loginController.pacienteLogado}"
-                           rowKey="#{item.id_paciente}" selectionMode="single" selection="#{pacienteController.selectdPaciente}">
+                <h:form id="formApresentaPaciente">
+                    <p:dataTable id="tablePaciente" var="item" value="#{loginController.pacienteLogado}"
+                                 rowKey="#{item.id_paciente}" selectionMode="single" selection="#{pacienteController.selectdPaciente=loginController.pacienteLogado}">
 
                         <f:facet name="header">
                             Pacientes Cadastrados
@@ -34,8 +35,6 @@
                                 #{item.nome}
                         </p:column> 
 
-                       
-
                         <p:column>
                             <f:facet name="header">CPF</f:facet>
                                 #{item.cpf}
@@ -46,14 +45,15 @@
                                 #{item.cartaoSus}
                         </p:column>
 
-                     </p:dataTable>
+                    </p:dataTable>
 
-                   
+
                     <p:commandButton value="Visualizar" oncomplete="PF('widDialVisualizaPaciente').show()"
-                                    icon="fa fa-search" />
+                                     icon="fa fa-search" update="formApresentaPaciente" />
 
                     <p:dialog id="dialVisualizaPaciente" visible="false"  header="Paciente Cadastrado"
-                              resizable="false" widgetVar="widDialVisualizaPaciente">
+                              resizable="false" widgetVar="widDialVisualizaPaciente"  >
+                        
                         <p:panelGrid columns="2">
                             <h:outputText value="Código:"/>
                             <h:outputText value="#{pacienteController.selectdPaciente.id_paciente}"/>
@@ -100,12 +100,12 @@
                             <h:outputText value="#{pacienteController.selectdPaciente.endereco.complemento}"/>
 
                         </p:panelGrid>
-                      
+
                     </p:dialog>
-      </h:form>
-        
-        
-         </ui:define>
+                </h:form>
+
+
+            </ui:define>
         </ui:composition>
 
     </h:body>

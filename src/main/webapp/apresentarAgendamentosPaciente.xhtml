@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Agendamentos</title>
+    </h:head>
+    <h:body>
+       <c:if test="${loginController.pacienteLogado == null}">
+            <script>location.href="menuLogin.xhtml";</script>
+        </c:if>
+        <ui:composition template="templatePaciente.xhtml"> 
+             <ui:define name="co" >
+         <p:growl id="gro" life="4000"/>
+        <h:form id="formCadAgend">
+            <p:dataTable id="tableAgend" value="#{agendamentoController.buscarAgendamento(loginController.pacienteLogado)}" 
+                         var="item" rowKey="#{item.codigo}" paginator="true" rows="5" selectionMode="single">
+                <p:column headerText="Data" width="60">
+                    #{item.data}
+                </p:column>
+                <p:column headerText="Nome do Paciente">
+                    #{item.paciente.nome}
+                </p:column>
+                <p:column headerText="Nome do Especialista">
+                    #{item.func.nome}
+                </p:column>
+                <p:column headerText="Nome do Posto">
+                    #{item.posto.nome}
+                </p:column>
+                
+                <p:column headerText="Operações" width="20%">
+                    <p:commandButton icon="ui-icon-search" oncomplete="PF('widDialVisualizaAgen').show()" 
+                                     update=":formCadAgend:dialVisualizaAgen">
+                    <f:setPropertyActionListener value="#{item}" target="#{agendamentoController.selectdAgend}"/>
+                    </p:commandButton>
+                    
+<!--                    <p:commandButton icon="ui-icon-pencil" oncomplete="PF('widDialAlterarAgen').show()"
+                                     update=":dialAlterarAgen">
+                        <f:setPropertyActionListener value="#{item}" target="#{agendamentoController.selectdAgend}"/>
+                    </p:commandButton>-->
+                    
+                    <p:commandButton icon="ui-icon-close" action="#{agendamentoController.removerAgendamento()}"
+                                     update=":formCadAgend:">
+                        <f:setPropertyActionListener value="#{item}" target="#{agendamentoController.selectdAgend}"/>
+                        <p:confirm header="Atenção" message="deseja realmente deletar o registro" />
+                    </p:commandButton>
+                    
+                </p:column>
+            </p:dataTable>
+            
+           <p:dialog id="dialVisualizaAgen" visible="false"  header="Agendamentos cadastrados"
+                      resizable="false" widgetVar="widDialVisualizaAgen">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Código:"/>
+                    <h:outputText value="#{agendamentoController.selectdAgend.codigo}"/>
+                    
+                    <h:outputText value="Data do Agendamento:"/>
+                    <h:outputText value="#{agendamentoController.selectdAgend.data}"/>
+                    
+                    <h:outputText value="Nome do especialista"/>
+                    <h:outputText value="#{agendamentoController.selectdAgend.func.nome}"/>
+                    
+                    <h:outputText value="Especialidade:"/>
+                    <h:outputText value="#{agendamentoController.selectdAgend.func.especialidade}"/>
+                    
+                    <h:outputText value="Posto de Atendimento:"/>
+                    <h:outputText value="#{agendamentoController.selectdAgend.posto.nome}"/>
+                    
+                   
+                </p:panelGrid>
+            </p:dialog>
+            
+        </h:form>
+        
+        
+       
+<!--        <p:dialog id="dialAlterarAgen" visible="false"  resizable="false"
+                  widgetVar="widDialAlterarAgen">
+            <h:form id="formDialAltera">
+                <p:panelGrid columns="3">
+                    <h:outputText value="CPF*:"/>
+                    <p:inputText id="txtCPF2" value="#{clienteController2.selectedCliente.cpf}" required="true"
+                                 requiredMessage="Seu fresco! tá faltando o CPF"/>
+                    <p:message for='txtCPF2' />
+                    
+                    <h:outputText  value="Nome*:"/>
+                    <p:inputText id="txtNome2" value="#{clienteController2.selectedCliente.nome}" required="true"
+                                 requiredMessage="tá faltando o nome"/>
+                    <p:message for="txtNome2"/>
+                    
+                    <h:outputText value="Endereço*:"/>
+                    <p:inputText id='txtEndereco2' required="true"
+                                 value="#{clienteController2.selectedCliente.endereco}" requiredMessage="Tá faltando o endereço"/>
+                    <p:message for="txtEndereco2"/>
+                    
+                    <h:outputText value="Telefone"/>
+                    <p:inputText value="#{clienteController2.selectedCliente.telefone}"/>
+                    <h:outputText/>
+                    
+                    <h:outputText value="Data de Nascimento"/>
+                    <p:inputText value="#{clienteController2.selectedCliente.dataNascimento}"/>
+                    <h:outputText/>
+                    
+                    <h:outputText value="e-mail"/>
+                    <p:inputText value="#{clienteController2.selectedCliente.email}"/>
+                    <h:outputText/>
+                </p:panelGrid>
+                <p:commandButton value="cadastrar" action="#{clienteController2.alterar()}"
+                                 update=":formCadCliente :gro" oncomplete="PF('widDialAlterarCliente').hide()">
+                    <p:confirm header="Atenção" message="deseja realmente alterar" />
+                </p:commandButton>
+            </h:form>
+        </p:dialog>-->
+        <p:confirmDialog  id="dialConfirm" global="true" widgetVar="widDialConfirma" >
+            <h:form>
+                <p:commandButton value="sim" styleClass="ui-confirmdialog-yes" type="button" icon="ui-icon-check"/>
+                <p:commandButton value="não" styleClass="ui-confirmdialog-no" type="button" icon="ui-icon-close"/>
+            </h:form>    
+        </p:confirmDialog>
+        </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
