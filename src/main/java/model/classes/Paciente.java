@@ -10,8 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-@ManagedBean
-@RequestScoped
 @Entity
 @Table
 public class Paciente {

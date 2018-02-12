@@ -9,7 +9,7 @@ import model.hibernate.AgendamentoHibernate;
 
 public class AgendamentoModel {
 
-    Dao<AgendamentoConsultas> dao = new AgendamentoHibernate();
+    private Dao<AgendamentoConsultas> dao = new AgendamentoHibernate();
 
     public void cadastrarAgendamento(AgendamentoConsultas ac) {
         if (((AgendamentoDao) dao).recuperar(ac.getCodigo()) == null) {

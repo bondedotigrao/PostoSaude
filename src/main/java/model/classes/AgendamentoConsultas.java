@@ -36,6 +36,7 @@ public class AgendamentoConsultas {
         this.posto = posto;
     }
     
+    @Deprecated
     public AgendamentoConsultas() {
     }
 

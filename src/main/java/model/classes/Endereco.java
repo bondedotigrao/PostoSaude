@@ -36,6 +36,7 @@ public class Endereco {
         this.numero = numero;
     }
 
+    @Deprecated
     public Endereco() {
     }
 
